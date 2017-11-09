@@ -15,7 +15,7 @@
 	    100% {left:-430rpx;}
  }
  /**邮件子类别**/
-.container .con1{position:absolute;top:0;left:-350rpx;width:350rpx;height:100%;box-shadow:0 0 2rpx #767676;background: white
+.container .con1{position:absolute;padding-top:80rpx;top:0;left:-350rpx;width:350rpx;height:100%;box-shadow:0 0 2rpx #767676;background: white
 }
 
 .container .con1.on{animation: donghua1 0.5s linear 0s 1 normal forwards;}
@@ -29,7 +29,7 @@
 	    100% {left:-350rpx;}
  }
 
-.container .con1 .bt{width:100%;height:80rpx;line-height:70rpx;padding-left:20rpx;color:#357abc;font-size:34rpx;}
+.container .con1 .bt{position:absolute;left: 0rpx;top:0rpx; width:100%;height:80rpx;line-height:70rpx;padding-left:20rpx;color:#357abc;font-size:34rpx;}
 .container .con1 .clist{width:100%;height:65rpx;line-height:65rpx;padding-left:80rpx;color:#111010;font-size:28rpx;border-bottom:1rpx #e5e5e5 solid;background-position:30rpx center;background-repeat:no-repeat;background-size:35rpx;}
 /* .container .con1 .clist:nth-child(2){background-image:url(http://bjcreate.chinacloudapp.cn/xiaochengxu/email/left01.png)}
 .container .con1 .clist:nth-child(3){background-image:url(http://bjcreate.chinacloudapp.cn/xiaochengxu/email/left02.png)}
