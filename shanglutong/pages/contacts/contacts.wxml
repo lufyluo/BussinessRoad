@@ -1,0 +1,9 @@
+<!--pages/contacts/contacts.wxml-->
+<view class="container">
+  <view class='box'>
+    <view class='list'>联系人1<button data-num='18501965858' class='btn1' bindtap='bindphone'>打电话</button><button class='btn2' bindtap='bindemail'>发邮件</button></view>
+    <view class='list'>联系人2<button data-num='18501965857' class='btn1' bindtap='bindphone'>打电话</button><button class='btn2' bindtap='bindemail'>发邮件</button></view>
+    <view class='list'>联系人3<button data-num='18501965856' class='btn1' bindtap='bindphone'>打电话</button><button class='btn2' bindtap='bindemail'>发邮件</button></view>
+    <view class='list'>联系人4<button data-num='18501965855' class='btn1' bindtap='bindphone'>打电话</button><button class='btn2' bindtap='bindemail'>发邮件</button></view>
+  </view>
+</view>

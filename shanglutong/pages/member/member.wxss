@@ -1,0 +1,24 @@
+/* pages/member/member.wxss */
+.container{width:100%;height:100%;padding-top:355rpx;overflow:hidden;position:fixed;top:0;left:0;}
+.container .box{width:100%;height:100%;position:relative;}
+.userinfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.userinfo-avatar {
+  width: 128rpx;
+  height: 128rpx;
+  margin: 20rpx;
+  border-radius: 50%;
+}
+
+.userinfo-nickname {
+  color: #aaa;
+}
+
+.usermotto {
+  text-align:center;
+  margin-top: 200px;
+}
