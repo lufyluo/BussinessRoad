@@ -63,7 +63,7 @@ App({
     transServer: 'http://116.62.232.164:9898/',//'http://localhost:18088/',
     server:'http://116.62.232.164:9898/',
     userInfo: {
-      UserId:'admin',
+      UserId:'wbf',
       Password:'96E79218965EB72C92A549DD5A330112',
       Ran: 981313799,
       Sign:'C07163FDF49F51FB7C7CB3DCCC2E9BD3'

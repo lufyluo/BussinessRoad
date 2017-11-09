@@ -1,7 +1,7 @@
 //index.js
 //获取应用实例
 const app = getApp()
-
+var util = require('../../utils/util.js')
 Page({
   data: {
     motto: 'Hello World',
@@ -16,10 +16,15 @@ Page({
     class3: '',
     emaiBoxes: [{ id: 'zn', name: "智能文件夹" }],
     currentBoxIndex: 0,
-    currentBoxMenuId: '',
-    currentBoxMenus:[]
+    currentBoxMenuId: 'ALL',
+    currentBoxMenus: [],
+    currentMails: [],
+    unread: 0,
+    count: 0,
+    pageIndex: 1,
+    pageSize: 10
   },
- 
+
   //事件处理函数
   bindViewTap: function () {
     wx.navigateTo({
@@ -30,6 +35,7 @@ Page({
     if (app.globalData.userInfo) {
       this.getEmailBoxes();
       this.getEmailBoxMenus("zn");
+      this.getEmails();
     }
   },
   /**
@@ -63,8 +69,11 @@ Page({
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function () {
+  onEmailsPullDownRefresh: function () {
+    wx.startPullDownRefresh()
+    console.log(1);
 
+    //wx.stopPullDownRefresh()
   },
 
   /**
@@ -170,9 +179,60 @@ Page({
       }
     });
   },
+  getEmails: function () {
+    var page = this;
+    var postData = app.globalData.userInfo;
+    postData.Boxid = this.data.emaiBoxes[this.data.currentBoxIndex].id;
+    postData.Act = this.data.currentBoxMenuId;
+    postData.pageindex = this.data.pageIndex;
+    postData.pagemax = this.data.pageSize;
+    //postData.order ="toptime";
+    wx.request({
+      url: app.globalData.transServer + "api/mail/Getlist",
+      header: {
+        "Content-Type": "application/x-www-form-urlencoded",
+        "TransToURL": app.globalData.server + "api/mail/Getlist" //http://116.62.232.164:9898/
+      },
+      method: "POST",
+      data: postData,
+      success: function (e) {
+        if (e.data.code = "0000") {
+          page.setupList(e.data.back.list);
+          var result = page.data.currentMails.concat(e.data.back.list);
+          page.setData({
+            currentMails: result,
+            unread: e.data.back.unread,
+            count: e.data.back.count,
+            pageIndex: e.data.back.index
+          });
+        }
+
+      }
+    });
+  },
   setupBoxName: function (arr) {
     for (var i = 0, l = arr.length; i < l; i++) {
       arr[i].showName = arr[i].name.slice(0, 1);
     }
+  },
+  setupList: function (arr) {
+    var page =this;
+    for (var item in arr) {
+      var date = new Date(arr[item].MailDate);
+      arr[item].formatDate = page.getListDate(date);
+      arr[item].formatBody = arr[item].textbody.slice(0,400);
+    }
+  },
+  getListDate: function (date) {
+    var today = new Date;
+    var dateString = '';
+    if (date.getFullYear() === today.getFullYear() &&date.getMonth() === today.getMonth()&&date.getDay() - today.getDay() === -1)
+    { dateString += "昨天"; }
+    else if (date.getFullYear() === today.getFullYear() && date.getMonth() === today.getMonth() &&date.getDay() - today.getDay() ===0 )
+    { dateString += "今天"; }
+    else
+    { dateString += date.getMonth() + "月" + date.getDay() + "日" + " "; }
+    dateString += date.getHours() + ":" + date.getMinutes();
+    return dateString;
   }
 })
