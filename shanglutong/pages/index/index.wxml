@@ -4,29 +4,31 @@
     <view class='list box {{index==currentBoxIndex?"boxSelected":""}}' bindtap="bindBoxSelected" data-text="{{index}}" wx:for="{{emaiBoxes}}">{{item.showName}}</view>
   </view>
   <view class='con1 {{class1}}'>
-    <view class='bt'>{{emaiBoxes[currentBoxIndex].name}}</view>
+    <view class='bt'>{{tabtext}}</view>
     <scroll-view class="box" bindscrolltoupper="menusRefresh" scroll-y="true">
-      <view class="{{currentBoxMenuId==item.id?'menuSelected':''}} clist {{item.id}} " data-current='{{index}}' bindtap='bindlist' wx:for="{{currentBoxMenus}}" data-text="{{item.id}}"><view>{{item.name}}</view></view>
+      <view class="{{currentBoxMenuId==item.id?'menuSelected':''}} clist {{item.iconAct}} " data-current='{{index}}' bindtap='bindlist' wx:for="{{currentBoxMenus}}" data-text="{{item.id}}">
+        <view>{{item.name}}</view>
+      </view>
     </scroll-view>
   </view>
   <view class='con2 {{class2}}'>
     <view class='tab'>
       <view class='tab1' bindtap='bindtab' data-tab='{{tab}}'>分类</view>
-      <view class='tab2'>{{unread}}</view>
-      <view class='tab3'>{{tabtext}}</view>
-      <navigator url='../work/work' open-type='switchTab' class='tab4'>写邮件</navigator>
+      <view class='tab2 {{unread==0?"hide":""}}' >{{unread}}</view>
+      <view class='tab3'>{{currentBoxMenus[toptab].name}}</view>
+      <navigator url='../work/work'  class='tab4'>写邮件</navigator>
     </view>
     <scroll-view class="box" bindscrolltoupper="onEmailsPullDownRefresh" scroll-y="true">
       <view class="blist {{toptab==0?'on':''}}">
         <view class='list on' wx:for="{{currentMails}}">
           <view class='bt'>
             <text class='bt1'>{{item.FromName}}</text>
-            <text class='bt2'>{{item.formatDate}}</text>
           </view>
           <view class='text1'>{{item.Subject}}</view>
           <view class='text2'>{{item.formatBody}}</view>
+          <text class='bt2'>{{item.formatDate}}</text>
         </view>
-        </view>
+      </view>
     </scroll-view>
   </view>
 </view>

@@ -117,6 +117,12 @@ Page({
   },
   bindBoxSelected: function (e) {
     this.setData({ currentBoxIndex: e.target.dataset.text });
+    var id = "";
+    if (this.data.currentBoxIndex!==0){
+      id +="m_";
+    }
+    id += this.data.emaiBoxes[this.data.currentBoxIndex].id;
+    this.getEmailBoxMenus(id);
 
   },
   /* 点击查看邮件 */
@@ -124,13 +130,14 @@ Page({
     this.setData({
       currentBoxMenuId: e.currentTarget.dataset.text
     })
-    if (this.data.toptab == e.target.dataset.current) {
-      /* return false */
+    if (this.data.toptab == e.currentTarget.dataset.current) {
     } else {
       this.setData({
-        toptab: e.target.dataset.current
+        tabtext: this.data.emaiBoxes[this.data.currentBoxIndex].name,
+        pageIndex:1
       })
     }
+    this.getEmails();
   },
   getEmailBoxes: function () {
     var page = this;
@@ -170,7 +177,7 @@ Page({
       data: postData,
       success: function (e) {
         if (e.data.code = "0000") {
-          var result = e.data.back;
+          var result = page.setupEmaiMenus(e.data.back);
           page.setData({
             currentBoxMenus: result
           });
@@ -198,9 +205,12 @@ Page({
       success: function (e) {
         if (e.data.code = "0000") {
           page.setupList(e.data.back.list);
+          // if (postData.pageindex ===1){
+          //   page.data.currentMails.length=0;
+          // }
           var result = page.data.currentMails.concat(e.data.back.list);
           page.setData({
-            currentMails: result,
+            currentMails: e.data.back.list,
             unread: e.data.back.unread,
             count: e.data.back.count,
             pageIndex: e.data.back.index
@@ -222,6 +232,17 @@ Page({
       arr[item].formatDate = page.getListDate(date);
       arr[item].formatBody = arr[item].textbody.slice(0,400);
     }
+  },
+  setupEmaiMenus: function (arr) {
+    var page = this;
+    for (var item in arr) {
+      if (arr[item].act.indexOf("WJJ")>=0){
+        arr[item].iconAct = "WJJ";
+        continue;
+      }      
+      arr[item].iconAct = arr[item].act;
+    }
+    return arr;
   },
   getListDate: function (date) {
     var today = new Date;

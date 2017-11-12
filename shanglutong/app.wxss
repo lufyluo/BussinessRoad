@@ -48,3 +48,6 @@ button::after{border:0;}
 .boxcom .list .lcon .price{width:60%;color:#e1010b;font-size:36rpx;}
 .boxcom .list .lcon .price text{font-size:24rpx;}
 .boxcom .list .lcon .buy_btn{width:30%;height:45rpx;border-radius:5rpx;background:#3a9c61;line-height:45rpx;text-align:center;color:#fff;font-size:28rpx;}
+.hide{
+    display:none
+}
