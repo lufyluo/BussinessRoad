@@ -1,1 +1,22 @@
-/* pages/work/work.wxss */
+.container{color: #545454;   font-size: 14px }
+.container .con1 .tb1{display: inline-block;margin-left: 25rpx;width: 130rpx}
+.container .con1 .tb2{display: inline-block;margin-left: 15rpx;width: 65%;text-align: center;margin-top: 25rpx}
+.container .con1 .tb3{display: inline-block;margin-right: 15rpx;width: 45rpx}
+
+.icon{
+    display: inline-block;
+    border: 4px solid transparent;
+    border-top: 4px solid #9b9b9b;
+    margin-left: 5px;
+}
+.nav-son.active .icon{
+    border-bottom: 4px solid #61beff;
+    border-top:0;
+}
+.line {  
+  width: 100%;  
+  height: 1px;  
+  background-color: #cccccc;  
+  margin-top: 1px;  
+}
+
