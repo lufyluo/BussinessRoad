@@ -15,7 +15,7 @@
     <view class='tab'>
       <view class='tab1' bindtap='bindtab' data-tab='{{tab}}'>分类</view>
       <view class='tab2 {{unread==0?"hide":""}}' >{{unread}}</view>
-      <view class='tab3'>{{currentBoxMenus[toptab].name}}</view>
+      <view class='tab3'>{{tabtext}}</view>
       <navigator url='../work/work'  class='tab4'>写邮件</navigator>
     </view>
     <scroll-view class="box" bindscrolltoupper="onEmailsPullDownRefresh" scroll-y="true">

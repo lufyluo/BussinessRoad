@@ -133,7 +133,7 @@ Page({
     if (this.data.toptab == e.currentTarget.dataset.current) {
     } else {
       this.setData({
-        tabtext: this.data.emaiBoxes[this.data.currentBoxIndex].name,
+        tabtext: this.data.currentBoxMenus[parseInt(e.currentTarget.dataset.current)].name,
         pageIndex:1
       })
     }
