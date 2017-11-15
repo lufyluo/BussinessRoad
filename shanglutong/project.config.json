@@ -10,7 +10,7 @@
 	"compileType": "miniprogram",
 	"libVersion": "1.5.4",
 	"appid": "touristappid",
-	"projectname": "shanglutongEmail",
+	"projectname": "shanglutongMaster",
 	"condition": {
 		"search": {
 			"current": -1,
