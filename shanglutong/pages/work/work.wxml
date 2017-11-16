@@ -1,42 +1,52 @@
 <view class="container">
   <view class='con1'>
     <label class="tb1">发件人:</label>
-    <input class='tb2' type='text' disabled='true' value="321@123.com"/>
+    <input class='tb2' type='text' disabled='true' value="321@123.com" />
     <view class="tb3" bindtap="listqy" data-nav="1">
       <view class="icon"></view>
     </view>
   </view>
-  <view class="line"></view> 
+  <view class="line"></view>
   <view class='con1'>
     <label class="tb1">收件人:</label>
-    <input class='tb2' placeholder="321@123.com"/>
+    <input class='tb2' placeholder="321@123.com" />
     <view class="tb3" bindtap="listqy" data-nav="1">
       <view class="icon"></view>
     </view>
   </view>
-  <view class="line"></view> 
+  <view class="line"></view>
   <view class='con1'>
     <label class="tb1">抄 送:</label>
-    <input class='tb2' placeholder="321@123.com"/>
+    <input class='tb2' placeholder="321@123.com" />
     <view class="tb3" bindtap="listqy" data-nav="1">
       <view class="icon"></view>
     </view>
   </view>
-  <view class="line"></view> 
+  <view class="line"></view>
   <view class='con1'>
     <label class="tb1">密 送:</label>
-    <input class='tb2' placeholder="321@123.com"/>
+    <input class='tb2' placeholder="321@123.com" />
     <view class="tb3" bindtap="listqy" data-nav="1">
       <view class="icon"></view>
     </view>
   </view>
-  <view class="line"></view> 
+  <view class="line"></view>
   <view class='con1'>
-    <label class="tb1">主  题:</label>
-    <input class='tb2' placeholder="Subject"/>
+    <label class="tb1">主 题:</label>
+    <input class='tb2' placeholder="Subject" />
     <view class="tb3" bindtap="listqy" data-nav="1">
       <view class="icon"></view>
     </view>
   </view>
-  <view class="line"></view> 
+  <view class="line"></view>
+  <view class='con1'>
+    <label class="tb4">添加标签:</label>
+    <input class='tb5' disabled='true' placeholder="" />
+    <view class="tb6" bindtap="listqy" data-nav="1">
+      <view class="emailType">普通邮件</view>
+      <view class="icon"></view>
+    </view>
+  </view>
+  <view class="line"></view>
+  <textarea name="evaContent" auto-height="true" maxlength='800' value="{{evaContent}}" class="weui-textarea" placeholder="填写内容"bindblur="charChange"/> 
 </view>
