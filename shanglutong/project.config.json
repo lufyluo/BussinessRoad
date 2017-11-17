@@ -10,7 +10,11 @@
 	"compileType": "miniprogram",
 	"libVersion": "1.5.4",
 	"appid": "wx32e1290bb22d8630",
+<<<<<<< HEAD
 	"projectname": "shanglutongMaster",
+=======
+	"projectname": "shanglutongF",
+>>>>>>> edcd1b5708d49e7731ffdcdf30bbc231e09c9a0d
 	"condition": {
 		"search": {
 			"current": -1,

@@ -1,22 +1,72 @@
-.container{color: #545454;   font-size: 14px }
-.container .con1 .tb1{display: inline-block;margin-left: 25rpx;width: 130rpx}
-.container .con1 .tb2{display: inline-block;margin-left: 15rpx;width: 65%;text-align: center;margin-top: 25rpx}
-.container .con1 .tb3{display: inline-block;margin-right: 15rpx;width: 45rpx}
-
-.icon{
-    display: inline-block;
-    border: 4px solid transparent;
-    border-top: 4px solid #9b9b9b;
-    margin-left: 5px;
-}
-.nav-son.active .icon{
-    border-bottom: 4px solid #61beff;
-    border-top:0;
-}
-.line {  
-  width: 100%;  
-  height: 1px;  
-  background-color: #cccccc;  
-  margin-top: 1px;  
+.container {
+  color: #545454;
+  font-size: 14px;
+  position: fixed;
+  top: 0;
+  left: 0;
 }
 
+.container .con1 .tb1 {
+  display: inline-block;
+  margin-left: 25rpx;
+  width: 130rpx;
+}
+
+.container .con1 .tb2 {
+  display: inline-block;
+  margin-left: 15rpx;
+  width: 65%;
+  text-align: center;
+  margin-top: 25rpx;
+}
+
+.container .con1 .tb3 {
+  display: inline-block;
+  margin-right: 15rpx;
+  width: 45rpx;
+}
+
+.container .con1 .tb4 {
+  display: inline-block;
+  margin-left: 25rpx;
+}
+
+.container .con1 .tb5 {
+  display: inline-block;
+  margin-left: 15rpx;
+  text-align: center;
+  margin-top: 25rpx;
+}
+
+.container .con1 .tb6 {
+  display: inline-block;
+}
+
+.container .con1 .tb6 .emailType {
+  display: inline-block;
+}
+
+.icon {
+  display: inline-block;
+  border: 4px solid transparent;
+  border-top: 4px solid #9b9b9b;
+  margin-left: 5px;
+}
+
+.nav-son.active .icon {
+  border-bottom: 4px solid #61beff;
+  border-top: 0;
+}
+
+.line {
+  width: 100%;
+  height: 1px;
+  background-color: #ccc;
+  margin-top: 1px;
+}
+
+.weui-textarea {
+  width: 100%;
+  min-height: 550rpx;
+  overflow-y: false;
+}
