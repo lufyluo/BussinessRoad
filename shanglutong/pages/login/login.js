@@ -140,7 +140,7 @@ Page({
 
   },
   setUpUserInfo: function () {
-    app.globalData.server = this.data.server;
+    app.globalData.server = this.data.server || app.globalData.server;
     app.globalData.userInfo.UserId = this.data.account;
     app.globalData.userInfo.Password = md5.hex_md5(this.data.password).toLocaleUpperCase();
     app.globalData.userInfo.Ran = 981313799;
