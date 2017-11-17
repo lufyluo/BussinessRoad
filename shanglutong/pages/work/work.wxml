@@ -40,7 +40,7 @@
   </view>
   <view class="line"></view>
   <view class='con1'>
-    <label class="tb4">添加标签:</label>
+    <label class="tb4">添加标签</label>
     <input class='tb5' disabled='true' placeholder="" />
     <view class="tb6" bindtap="listqy" data-nav="1">
       <view class="emailType">普通邮件</view>
@@ -49,4 +49,5 @@
   </view>
   <view class="line"></view>
   <textarea name="evaContent" auto-height="true" maxlength='800' value="{{evaContent}}" class="weui-textarea" placeholder="填写内容"bindblur="charChange"/> 
+  <view class="selectPop sendEmails"></view>
 </view>
