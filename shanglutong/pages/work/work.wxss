@@ -4,6 +4,7 @@
   position: fixed;
   top: 0;
   left: 0;
+  height: 100%;
 }
 
 .container .con1 .tb1 {
@@ -69,4 +70,54 @@
   width: 100%;
   min-height: 550rpx;
   overflow-y: false;
+}
+
+.hide {
+  display: none;
+}
+
+.selectPop {
+  position: absolute;
+  height: 100%;
+  top: 0rpx;
+  left: 0rpx;
+  background: white;
+  width: 100%;
+  z-index: 100;
+}
+
+.selectItem {
+  text-align: center;
+  height: 55rpx;
+}
+
+.searchCon{
+  border: 1rpx solid #F5F6F7;
+  border-radius: 7rpx;
+  width:99%;
+  background-color: #F5F6F7;
+  height:85rpx
+}
+.selectList {
+  position: fixed;
+  left: 0rpx;
+  top: 0rpx;
+  z-index: 15;
+}
+
+.searchTag {
+  display: inline-block;
+}
+.searchInput{
+  background-color: white;
+  width: 84%;
+  height: 100%;
+  margin-left:25rpx
+}
+.searchBtn {
+  width: 75rpx;
+  height: 100%;
+  font-size: 31rpx;
+  float: right;
+  color:#80809F
 }
