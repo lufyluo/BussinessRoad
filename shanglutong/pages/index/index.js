@@ -121,7 +121,9 @@ Page({
     if (this.data.currentBoxIndex!==0){
       id +="m_";
     }
-    id += this.data.emaiBoxes[this.data.currentBoxIndex].id;
+    var curBox = this.data.emaiBoxes[this.data.currentBoxIndex]
+    id += curBox.id;
+    app.globalData.currentBox = curBox;
     this.getEmailBoxMenus(id);
 
   },
@@ -141,7 +143,7 @@ Page({
   },
   getEmailBoxes: function () {
     var page = this;
-    var item = page.data.emaiBoxes[0];
+    var item = page.data.emaiBoxes[0];    
     wx.request({
       url: app.globalData.transServer + "api/mailbox/get",
       header: {
@@ -155,9 +157,10 @@ Page({
           var result = e.data.back;
           result.splice(0, 0, item);
           page.setupBoxName(result);
+          page.setupGlobalBox(result,0);
           page.setData({
             emaiBoxes: result
-          });
+          });         
         }
 
       }
@@ -219,6 +222,13 @@ Page({
 
       }
     });
+  },
+  setupGlobalBox:function(arr,index){
+    app.globalData.emailBoxes = arr;
+    if (arr[0] && !arr[0].email){
+      arr[0].email = arr[1].email;
+    }
+    app.globalData.currentBox = arr[index];
   },
   setupBoxName: function (arr) {
     for (var i = 0, l = arr.length; i < l; i++) {

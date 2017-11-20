@@ -1,7 +1,7 @@
 <view class="container">
   <view class='con1'>
-    <label class="tb1" bindtap='bindSend'>发件人:</label>
-    <input class='tb2' type='text' disabled='true' value="321@123.com" />
+    <label class="tb1">发件人:</label>
+    <input class='tb2' type='text' disabled='true' value="{{currentSendEmail}}" />
     <view class="tb3" bindtap="bindPopSelectSendEmails" data-nav="1">
       <view class="icon"></view>
     </view>
@@ -10,7 +10,7 @@
   <view class='con1'>
     <label class="tb1">收件人:</label>
     <input class='tb2' placeholder="321@123.com" />
-    <view class="tb3" bindtap="listqy" data-nav="1">
+    <view class="tb3" bindtap="bindPopSelectRecieveEmails" data-nav="1">
       <view class="icon"></view>
     </view>
   </view>
@@ -50,16 +50,12 @@
   <view class="line"></view>
   <textarea name="evaContent" auto-height="true" maxlength='800' value="{{evaContent}}" class="weui-textarea" placeholder="填写内容" bindblur="charChange" />
   <view class="selectPop sendEmails {{IsSendEmailsPop?'':'hide'}}">
-    <view class="selectItem">test@test.com</view>
-    <view class="line"></view>
-    <view class="selectItem">test@test.com</view>
-    <view class="line"></view>
+    <view class="selectItem {{currentBox.id==item.id?'selected':''}} {{index==hideIndex?'hide':''}}" wx:for="{{boxes}}" bindtap="bindSelectSendEmail"  data-text="{{index}}">{{item.email}}</view>
   </view>
   <view class="selectPop recieveEmails {{IsRecieveEmailsPop?'':'hide'}}">
    <view class="searchCon">
     <input class="searchTag searchInput" placeholder="搜素"></input><button class="searchTag searchBtn" type='button' value='搜素'>搜索</button>
   </view>
    <view class="selectItem">test@test.com</view>
-    <view class="line"></view>
   </view>
 </view>

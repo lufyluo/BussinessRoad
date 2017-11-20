@@ -88,7 +88,10 @@
 
 .selectItem {
   text-align: center;
-  height: 55rpx;
+  height:75rpx;
+border-bottom:1rpx #d9d9d9 solid;
+line-height:75rpx;
+
 }
 
 .searchCon{
@@ -120,4 +123,8 @@
   font-size: 31rpx;
   float: right;
   color:#80809F
+}
+
+.sendEmails .selected{
+  background:gray;
 }

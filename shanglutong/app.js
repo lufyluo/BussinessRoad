@@ -68,6 +68,8 @@ App({
       Ran: 981313799,
       Sign:'C07163FDF49F51FB7C7CB3DCCC2E9BD3'
     },
+    currentBox: { id: 'zn', name: "智能文件夹",email:"" },
+    emailBoxes: [{ id: 'zn', name: "智能文件夹", email: "" }, { id: 'lz', name: "智能文件夹1", email: "32111@123.com" }, { id: 'lz1', name: "智能文件夹1", email: "32661@123.com" }],
     EmailInfo:{},
   }
 })

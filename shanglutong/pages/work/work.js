@@ -1,4 +1,5 @@
 // pages/work/work.js
+const app = getApp();
 Page({
 
   /**
@@ -7,22 +8,45 @@ Page({
   data: {
       IsSendEmailsPop: false,
       IsRecieveEmailsPop: false,
+      currentBox :{},
+      currentSendEmail:"",
+      hideId:"zn",
+      hideIndex:0,
+      boxes:[],
       sendInfo:{
         sendEmail:""
       }
   },
   /***click event ***/
   bindPopSelectSendEmails:function(e){
-    console.log("s");
     this.setData({
       IsSendEmailsPop : true
+    });
+  },
+  bindPopSelectRecieveEmails:function(e){
+    this.setData({
+      IsRecieveEmailsPop: true
+    });
+  },
+  bindSelectSendEmail:function(e){
+    var selectedItem = this.data.boxes[parseInt(e.currentTarget.dataset.text)]
+    this.setData({
+      currentBox: selectedItem,
+      IsSendEmailsPop: false,
+      currentSendEmail: selectedItem.email
     });
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    var email = app.globalData.currentBox.email.length == 0 ? app.globalData.emailBoxes[1].email:app.globalData.currentBox.email;
+    this.setData({
+      currentBox: app.globalData.currentBox,
+      boxes: app.globalData.emailBoxes,
+      currentSendEmail: email
+    });
+   
   },
 
   /**
@@ -71,6 +95,9 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
+
+  },
+  setUpAddParam:function(){
 
   }
 })
