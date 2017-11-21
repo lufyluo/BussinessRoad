@@ -16,7 +16,7 @@
 .container .con1 .tb2 {
   display: inline-block;
   margin-left: 15rpx;
-  width: 65%;
+  width: 400rpx;
   text-align: center;
   margin-top: 25rpx;
 }
@@ -25,6 +25,8 @@
   display: inline-block;
   margin-right: 15rpx;
   width: 45rpx;
+  float: right;
+  margin-top: 15px;
 }
 
 .container .con1 .tb4 {
@@ -84,23 +86,24 @@
   background: white;
   width: 100%;
   z-index: 100;
+  overflow-y: auto;
 }
 
 .selectItem {
   text-align: center;
-  height:75rpx;
-border-bottom:1rpx #d9d9d9 solid;
-line-height:75rpx;
-
+  height: 75rpx;
+  border-bottom: 1rpx #d9d9d9 solid;
+  line-height: 75rpx;
 }
 
-.searchCon{
-  border: 1rpx solid #F5F6F7;
+.searchCon {
+  border: 1rpx solid #f5f6f7;
   border-radius: 7rpx;
-  width:99%;
-  background-color: #F5F6F7;
-  height:85rpx
+  width: 99%;
+  background-color: #f5f6f7;
+  height: 85rpx;
 }
+
 .selectList {
   position: fixed;
   left: 0rpx;
@@ -111,20 +114,57 @@ line-height:75rpx;
 .searchTag {
   display: inline-block;
 }
-.searchInput{
+
+.searchInput {
   background-color: white;
   width: 84%;
   height: 100%;
-  margin-left:25rpx
+  margin-left: 25rpx;
 }
+
 .searchBtn {
   width: 75rpx;
   height: 100%;
   font-size: 31rpx;
   float: right;
-  color:#80809F
+  color: #80809f;
 }
 
-.sendEmails .selected{
-  background:gray;
+.sendEmails .selected {
+  background: gray;
+}
+
+.recieveEmails checkbox-group checkbox {
+  width: 100%;
+  text-align: center;
+  border-bottom:1rpx #d9d9d9 solid;
+width:100%;
+
+}
+
+checkbox-group checkbox .selectItem {
+  width: 550rpx;
+  border-bottom: null;
+}
+
+.bottomBtns {
+  padding-left: 20rpx;
+  padding-right: 20rpx;
+  position: fixed;
+  bottom: 0rpx;
+  width: 100%;
+}
+
+.bottomBtns .submitBtn {
+  float: right;
+}
+
+.enclosure {
+  background-image: url(https://crm.18518.net:8089/images/img/enclosure.png);
+  width: 55rpx;
+  height: 55rpx;
+  background-repeat: no-repeat;
+  background-position: 0.5px center;
+  wxcs_style_background-position: 0rpx center;
+  background-size: 27px;
 }

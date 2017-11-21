@@ -1,7 +1,7 @@
 <view class="container">
   <view class='con1'>
     <label class="tb1">发件人:</label>
-    <input class='tb2' type='text' disabled='true' value="{{currentSendEmail}}" />
+    <input class='tb2' type='text' disabled='true' value="{{currentSendEmail}}"/>
     <view class="tb3" bindtap="bindPopSelectSendEmails" data-nav="1">
       <view class="icon"></view>
     </view>
@@ -9,38 +9,38 @@
   <view class="line"></view>
   <view class='con1'>
     <label class="tb1">收件人:</label>
-    <input class='tb2' placeholder="321@123.com" />
-    <view class="tb3" bindtap="bindPopSelectRecieveEmails" data-nav="1">
+    <input class='tb2' value='{{currentRecieveEmails}}' bindfocus='bindrecieveEmailFocus' bindblur='bindrecieveEmailBlur'/>
+    <view class=" {{recieveEmailFocused==true?'tb3':'hide'}}" bindtap="bindPopSelectRecieveEmails" data-nav="1">
       <view class="icon"></view>
     </view>
   </view>
   <view class="line"></view>
   <view class='con1'>
     <label class="tb1">抄 送:</label>
-    <input class='tb2' placeholder="321@123.com" />
-    <view class="tb3" bindtap="listqy" data-nav="1">
+    <input class='tb2' value='{{currentCcEmails}}'  bindfocus='bindCcEmailFocus' bindblur='bindCcEmailBlur'/>
+    <view class=" {{ccEmailFocused?'tb3':'hide'}}" bindtap="bindPopSelectCcEmails" data-nav="1">
       <view class="icon"></view>
     </view>
   </view>
   <view class="line"></view>
   <view class='con1'>
     <label class="tb1">密 送:</label>
-    <input class='tb2' placeholder="321@123.com" />
-    <view class="tb3" bindtap="listqy" data-nav="1">
+    <input class='tb2' value='{{currentBccEmails}}'  bindfocus='bindBccEmailFocus' bindblur='bindBccEmailBlur'/>
+    <view class="{{bccEmailFocused?'tb3':'hide'}}" bindtap="bindPopSelectBccEmails" data-nav="1">
       <view class="icon"></view>
     </view>
   </view>
   <view class="line"></view>
   <view class='con1'>
     <label class="tb1">主 题:</label>
-    <input class='tb2' placeholder="Subject" />
+    <input class='tb2' />
     <view class="tb3" bindtap="listqy" data-nav="1">
-      <view class="icon"></view>
+      <view class="enclosure"></view>
     </view>
   </view>
   <view class="line"></view>
   <view class='con1'>
-    <label class="tb4">添加标签</label>
+    <label class="tb4" bindtap='bindLabelTap'>添加标签</label>
     <input class='tb5' disabled='true' placeholder="" />
     <view class="tb6" bindtap="listqy" data-nav="1">
       <view class="emailType">普通邮件</view>
@@ -50,12 +50,64 @@
   <view class="line"></view>
   <textarea name="evaContent" auto-height="true" maxlength='800' value="{{evaContent}}" class="weui-textarea" placeholder="填写内容" bindblur="charChange" />
   <view class="selectPop sendEmails {{IsSendEmailsPop?'':'hide'}}">
-    <view class="selectItem {{currentBox.id==item.id?'selected':''}} {{index==hideIndex?'hide':''}}" wx:for="{{boxes}}" bindtap="bindSelectSendEmail"  data-text="{{index}}">{{item.email}}</view>
+    <view class="selectItem {{currentBox.id==item.id?'selected':''}} {{index==hideIndex?'hide':''}}" wx:for="{{boxes}}" bindtap="bindSelectSendEmail" data-text="{{index}}">{{item.email}}</view>
   </view>
   <view class="selectPop recieveEmails {{IsRecieveEmailsPop?'':'hide'}}">
-   <view class="searchCon">
-    <input class="searchTag searchInput" placeholder="搜素"></input><button class="searchTag searchBtn" type='button' value='搜素'>搜索</button>
+    <view class="searchCon">
+      <input class="searchTag searchInput" placeholder="搜素"></input>
+      <button class="searchTag searchBtn" type='button' value='搜素'>搜索</button>
+    </view>
+    <checkbox-group bindchange="bindRecieveCheckboxChange">
+      <checkbox value="{{item.email}}" class="{{item.email==null?'hide':''}}" wx:for="{{contactors}}">
+        <view class="selectItem">{{item.email}}</view>
+      </checkbox>
+    </checkbox-group>
+    <view class="bottomBtns">
+      <button type="warn" size="mini" bindtap='bindCancelSelected'> 取消 </button>
+      <button type="primary" class="submitBtn" size="mini" bindtap='bindSubmitSelected'> 确定 </button>
+    </view>
   </view>
-   <view class="selectItem">test@test.com</view>
+ 
+  <view class="selectPop ccEmails {{IsCcEmailsPop?'':'hide'}}">
+    <view class="searchCon">
+      <input class="searchTag searchInput" placeholder="搜素"></input>
+      <button class="searchTag searchBtn" type='button' value='搜素'>搜索</button>
+    </view>
+    <checkbox-group bindchange="bindCcCheckboxChange">
+      <checkbox value="{{item.email}}" class="{{item.email==null?'hide':''}}" wx:for="{{contactors}}">
+        <view class="selectItem">{{item.email}}</view>
+      </checkbox>
+    </checkbox-group>
+    <view class="bottomBtns">
+      <button type="warn" size="mini" bindtap='bindCcCancelSelected'> 取消 </button>
+      <button type="primary" class="submitBtn" size="mini" bindtap='bindCcSubmitSelected'> 确定 </button>
+    </view>
+  </view>
+
+  <view class="selectPop bccEmails {{IsBccEmailsPop?'':'hide'}}">
+    <view class="searchCon">
+      <input class="searchTag searchInput" placeholder="搜素"></input>
+      <button class="searchTag searchBtn" type='button' value='搜素'>搜索</button>
+    </view>
+    <checkbox-group bindchange="bindBccCheckboxChange">
+      <checkbox value="{{item.email}}" class="{{item.email==null?'hide':''}}" wx:for="{{contactors}}">
+        <view class="selectItem">{{item.email}}</view>
+      </checkbox>
+    </checkbox-group>
+    <view class="bottomBtns">
+      <button type="warn" size="mini" bindtap='bindBccCancelSelected'> 取消 </button>
+      <button type="primary" class="submitBtn" size="mini" bindtap='bindBccSubmitSelected'> 确定 </button>
+    </view>
+  </view>
+
+  <view class="selectPop emailLabels {{IsLabelsPop?'':'hide'}}">
+    <checkbox-group bindchange="bindLabelsCheckboxChange">
+      <checkbox value="{{item.Class}}"  wx:for="{{labels}}">
+        <view class="selectItem">{{item.name}}</view>
+      </checkbox>
+    </checkbox-group>
+    <view class="bottomBtns">
+      <button type="primary" class="submitBtn" size="mini" bindtap='bindLabelsSubmitSelected'> 确定 </button>
+    </view>
   </view>
 </view>
