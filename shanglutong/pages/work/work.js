@@ -227,7 +227,27 @@ Page({
       data:1
     })
   },
-  bindSend: function (e) { },
+  bindSend: function (e) {
+    var page = this;
+    var postData = page.setUpAddParam();
+    wx.request({
+      url: app.globalData.transServer + "api/mail/add",
+      header: {
+        "Content-Type": "application/x-www-form-urlencoded",
+        "TransToURL": app.globalData.server + "api/mail/add" //http://116.62.232.164:9898/
+      },
+      method: "POST",
+      data: postData,
+      success: function (e) {
+        if (e.data.code = "0000") {
+          wx.navigateBack({
+            data:1
+          });
+        }
+
+      }
+    });
+   },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -295,12 +315,7 @@ Page({
   getContactors: function () {
     var page = this;
     //todo:need change
-    var postData = {
-      UserId: 'wbf',
-      Password: '96E79218965EB72C92A549DD5A330112',
-      Ran: 981313799,
-      Sign: 'C07163FDF49F51FB7C7CB3DCCC2E9BD3'
-    };
+    var postData = app.globalData.userInfo;
     wx.request({
       url: app.globalData.transServer + "api/user/GetAllUser",
       header: {
@@ -324,12 +339,7 @@ Page({
   getLabels: function () {
     var page = this;
     //todo:change
-    var postData = {
-      UserId: 'wbf',
-      Password: '96E79218965EB72C92A549DD5A330112',
-      Ran: 981313799,
-      Sign: 'C07163FDF49F51FB7C7CB3DCCC2E9BD3'
-    };
+    var postData = app.globalData.userInfo;
     wx.request({
       url: app.globalData.transServer + "api/mail/getlabel",
       header: {
@@ -352,12 +362,7 @@ Page({
   getEmailTypes: function () {
     var page = this;
     //todo:change
-    var postData = {
-      UserId: 'wbf',
-      Password: '96E79218965EB72C92A549DD5A330112',
-      Ran: 981313799,
-      Sign: 'C07163FDF49F51FB7C7CB3DCCC2E9BD3'
-    };
+    var postData = app.globalData.userInfo;
     wx.request({
       url: app.globalData.transServer + "api/mail/GetMB",
       header: {
@@ -398,6 +403,7 @@ Page({
       MailLabel:this.data.selectedLabels,
       Type: this.data.selectedMailType
       };
+      return data;
   },
   getCurrentUser:function(){
     if (app.globalData.currentUser.username)
