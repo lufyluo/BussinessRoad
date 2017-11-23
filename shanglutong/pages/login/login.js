@@ -56,6 +56,7 @@ Page({
         data: app.globalData.userInfo,
         success: function (e) {
           console.log(e);
+          app.globalData.currentUser.Hxid=e.back;
           if (e && e.data.code === "0000") {
             wx.navigateTo({
               url: '../index/index',

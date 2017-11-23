@@ -31,8 +31,23 @@ Page({
     },
     contactors: [],
     labels: [],
+    selectedLabels: [],
     IsLabelsPop: false,
-    mailTypes: []
+    mailTypes: [],
+    emailTypePopPosition: {},
+    defaultType: {},
+    selectedMailType: "",
+    IsMailTypePop: false,
+    IsWithMskPop: false,
+    Subject:"",
+    Content:"",
+    /**  
+        * 页面配置  
+        */
+    winWidth: 0,
+    winHeight: 0,
+    // tab切换    
+    currentTab: 0,
   },
   /***click event ***/
   bindPopSelectSendEmails: function (e) {
@@ -179,14 +194,40 @@ Page({
   },
   bindLabelsCheckboxChange: function (e) {
     this.setData({
-      labels: e.detail.value
+      selectedLabels: e.detail.value
     });
   },
   bindLabelsSubmitSelected: function (e) {
     this.setData({
-      IsLabelsPop: false    
+      IsLabelsPop: false
     });
   },
+  bindEmaiTypePop: function (e) {
+    var postion = { x: e.currentTarget.offsetLeft, y: e.currentTarget.offsetTop }
+    this.setData({
+      emailTypePopPosition: postion,
+      IsWithMskPop: true
+    });
+  },
+  bindMaskTap: function (e) {
+    this.setData({
+      IsWithMskPop: false
+    });
+  },
+  bindEmailTypeSelected: function (e) {
+    var index = parseInt(e.currentTarget.dataset.text);
+    console.log(this.data.mailTypes[index]);
+    this.setData({
+      defaultType: this.data.mailTypes[index],
+      IsWithMskPop: false
+    });
+  },
+  bindCancelSend:function(e){
+    wx.navigateBack({
+      data:1
+    })
+  },
+  bindSend: function (e) { },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -329,7 +370,8 @@ Page({
         if (e.data.code = "0000") {
           var result = e.data.back;
           page.setData({
-            mailTypes: result
+            mailTypes: result,
+            defaultType: result[0]
           });
         }
 
@@ -337,6 +379,39 @@ Page({
     });
   },
   setUpAddParam: function () {
-
+    var data = {
+      UserId: app.globalData.userInfo.UserId,
+      Password: app.globalData.userInfo.Password,
+      Ran: app.globalData.userInfo.Ran,
+      Sign: app.globalData.userInfo.Sign,
+      check: 1,
+      MailBoxId: app.globalData.currentBox.id,
+      FromName: app.globalData.userInfo.Sign,
+      Subject: this.data.Subject,
+      SendDate: new Date(),
+      MailType: "text/html",
+      itFrom: this.getCurrentUser().username+"<"+this.data.currentSendEmail+">",
+      itTo: this.data.currentRecieveEmails,
+      cc: this.data.currentCcEmails,
+      Bcc: this.data.currentBccEmails,
+      TextBody: this.data.Content,
+      MailLabel:this.data.selectedLabels,
+      Type: this.data.selectedMailType
+      };
+  },
+  getCurrentUser:function(){
+    if (app.globalData.currentUser.username)
+      return app.globalData.currentUser
+    var currentUser;
+    for (var user in app.globalData.contactors){
+      if (user.Hxid === app.globalData.currentUser.Hxid){
+        currentUser = user;
+        break;
+      }
+    }
+    if(currentUser){
+      app.globalData.currentUser = user;
+      return user;
+    }
   }
 })
