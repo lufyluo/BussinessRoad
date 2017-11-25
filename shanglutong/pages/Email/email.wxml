@@ -1,2 +1,17 @@
-<!--pages/Email/email.wxml-->
-<text>pages/Email/email.wxml</text>
+<view class="container">
+  <view class='subject'>
+    {{emailInfo.Subject}}
+  </view>
+  <view class='SendDate'>
+    {{emailInfo.SendDate}}
+  </view>
+  <view class='itFrom'>
+    发件人：<view>{{emailInfo.FromEmail}}</view>
+    <label class='itToHideLabel' bindtap='bindItToHide'>{{itToHide}}</label>
+  </view>
+  <view class='itTo {{itToHide=="隐藏"?"":"hide"}}'>
+    收件人：<view>{{emailInfo.itTo}}</view>
+  </view>
+  <textarea class='TextBody' disabled="true" auto-height="true" value='{{emailInfo.textbody}}'>    
+  </textarea>
+</view>

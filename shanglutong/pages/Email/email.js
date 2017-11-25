@@ -1,66 +1,41 @@
 // pages/Email/email.js
+const app = getApp()
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-  
+    emailInfo: {
+      Subject: "找客户宝典",
+      SendDate: "2017-11-25 14:40:31",
+      itFrom: "ing@a.com",
+      itTo: "inquiry",
+      TextBody: "weqwdsadsadasdwdadsaderqwedeasdasdawedadscsasvfdsgfeqrdwqedwasdasdcewqwqeqwfedscdasaascddsfqweqwefrsdsafgwfewrwefedwqefwdefeqwefwqfewqefwqfeswfswfswfeswfesddfsdffsdfsdwfefrwedsefdsvefsdvrgfb"
+    },
+    itToHide: "隐藏",
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    this.setData({
+      emailInfo: app.globalData.currentEmail
+    });
+    console.log(app.globalData.currentEmail);
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-  
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-  
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-  
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-  
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-  
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-  
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-  
+  bindItToHide:function(e){
+    var itTo=""
+    if (this.data.itToHide ==="隐藏")
+    {
+      itTo="详情";
+    }else{
+      itTo = "隐藏";
+    }
+    this.setData({
+      itToHide: itTo
+    });
   }
+
 })

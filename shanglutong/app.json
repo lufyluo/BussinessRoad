@@ -1,9 +1,9 @@
 {
   "pages": [
+    "pages/index/index",
+    "pages/Email/email",
     "pages/work/work",
     "pages/login/login",
-"pages/index/index",
-    "pages/Email/email",
     "pages/search/search",
     "pages/logs/logs",
     "pages/tools/tool"

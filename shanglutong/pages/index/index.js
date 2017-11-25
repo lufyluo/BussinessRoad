@@ -141,6 +141,13 @@ Page({
     }
     this.getEmails();
   },
+  bindEmaiClick:function(e){
+    var email = this.data.currentMails[parseInt(e.currentTarget.dataset.current)];
+    app.globalData.currentEmail = email;
+    wx.navigateTo({
+      url: '../Email/email',
+    })
+  },
   getEmailBoxes: function () {
     var page = this;
     var item = page.data.emaiBoxes[0];    

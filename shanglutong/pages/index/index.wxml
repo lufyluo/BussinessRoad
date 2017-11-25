@@ -19,8 +19,8 @@
       <navigator url='../work/work'  class='tab4'>写邮件</navigator>
     </view>
     <scroll-view class="box" bindscrolltoupper="onEmailsPullDownRefresh" scroll-y="true">
-      <view class="blist {{toptab==0?'on':''}}">
-        <view class="list {{item.Read!='是'?'on':''}}" wx:for="{{currentMails}}">
+      <view class="blist {{toptab==0?'on':''}}" >
+        <view class="list {{item.Read!='是'?'on':''}}" bindtap='bindEmaiClick' data-current='{{index}}' wx:for="{{currentMails}}">
           <view class='bt'>
             <text class='bt1'>{{item.FromName}}</text>
           </view>
