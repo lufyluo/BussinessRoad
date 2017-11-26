@@ -14,15 +14,21 @@
   <view class='con2 {{class2}}'>
     <view class='tab'>
       <view class='tab1' bindtap='bindtab' data-tab='{{tab}}'>分类</view>
-      <view class='tab2 {{unread==0?"hide":""}}' >{{unread}}</view>
+      <view class='tab2 {{unread==0?"hide":""}}'>{{unread}}</view>
       <view class='tab3'>{{tabtext}}</view>
-      <navigator url='../work/work'  class='tab4'>写邮件</navigator>
+      <navigator url='../work/work' class='tab4'>写邮件</navigator>
     </view>
     <scroll-view class="box" bindscrolltoupper="onEmailsPullDownRefresh" scroll-y="true">
-      <view class="blist {{toptab==0?'on':''}}" >
+      <view class="blist {{toptab==0?'on':''}}">
         <view class="list {{item.Read!='是'?'on':''}}" bindtap='bindEmaiClick' data-current='{{index}}' wx:for="{{currentMails}}">
           <view class='bt'>
             <text class='bt1'>{{item.FromName}}</text>
+            <image class="emailSign {{item.star==null?'hide':''}}" src="https://crm.18518.net:8089/images/menus/BQYJ.png" mode="aspectFill">
+            </image>
+            <image class="emailSign {{item.redflag==null?'hide':''}}" src="https://crm.18518.net:8089/images/menus/NB.png" mode="aspectFill">
+            </image>
+            <image class="emailSign {{item.AccCount>0?'':'hide'}}" src="https://crm.18518.net:8089/images/img/enclosure.png" mode="aspectFill">
+            </image>
           </view>
           <view class='text1'>{{item.Subject}}</view>
           <view class='text2'>{{item.formatBody}}</view>

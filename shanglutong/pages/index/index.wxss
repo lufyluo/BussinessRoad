@@ -95,3 +95,15 @@
 .YSC{background-image:url(https://crm.18518.net:8089/images/menus/YSC.png);}
 .WJJ{background-image:url(https://crm.18518.net:8089/images/menus/WJJ73.png);}
 .WJJ209{background-image:url(https://crm.18518.net:8089/images/menus/WJJ73.png);}
+
+.emailSign{
+  width:15px;
+height:15px;
+display:inline-block;
+overflow:hidden;
+
+}
+
+.hide{
+  display: none
+}

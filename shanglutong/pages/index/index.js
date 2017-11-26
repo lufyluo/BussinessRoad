@@ -22,7 +22,7 @@ Page({
     unread: 0,
     count: 0,
     pageIndex: 1,
-    pageSize: 10
+    pageSize: 100
   },
 
   //事件处理函数
@@ -143,6 +143,8 @@ Page({
   },
   bindEmaiClick:function(e){
     var email = this.data.currentMails[parseInt(e.currentTarget.dataset.current)];
+    email.Read=true;
+   console.log(e);
     app.globalData.currentEmail = email;
     wx.navigateTo({
       url: '../Email/email',
