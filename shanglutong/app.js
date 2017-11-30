@@ -60,11 +60,11 @@ App({
     })
   },
   globalData: {
-    transServer: 'https://crm.18518.net:18088/',//'https://crm.18518.net:18088/',//
+    transServer: 'https://crm.18518.net:18080/',//'https://crm.18518.net:18088/',//
     server: 'http://116.62.232.164:9898/',//'http://crm.18518.net:9898/',//
     currentUser:{},
     currentEmail:{},
-    userInfo: {
+    clientInfo: {
       UserId:'wbf',
       Password:'96E79218965EB72C92A549DD5A330112',
       Ran: 981313799,

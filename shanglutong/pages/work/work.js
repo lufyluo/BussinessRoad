@@ -39,8 +39,8 @@ Page({
     selectedMailType: "",
     IsMailTypePop: false,
     IsWithMskPop: false,
-    Subject:"",
-    Content:"",
+    Subject: "",
+    Content: "",
     /**  
         * 页面配置  
         */
@@ -48,6 +48,7 @@ Page({
     winHeight: 0,
     // tab切换    
     currentTab: 0,
+    uploadFiles: []
   },
   /***click event ***/
   bindPopSelectSendEmails: function (e) {
@@ -222,9 +223,9 @@ Page({
       IsWithMskPop: false
     });
   },
-  bindCancelSend:function(e){
+  bindCancelSend: function (e) {
     wx.navigateBack({
-      data:1
+      data: 1
     })
   },
   bindSend: function (e) {
@@ -241,13 +242,43 @@ Page({
       success: function (e) {
         if (e.data.code = "0000") {
           wx.navigateBack({
-            data:1
+            data: 1
           });
         }
 
       }
     });
-   },
+  },
+  bindUploadFile: function (e) {
+    // var pageHandle = this;
+    // wx.chooseImage({
+    //   success: function (chooseImageCallbackParams) {
+    //     var tempFilePaths = chooseImageCallbackParams.tempFilePaths
+    //     wx.uploadFile({
+    //       url: SERVER_URL,
+    //       filePath: tempFilePaths[0],
+    //       name: 'file',
+    //       success: function (uploadFileCallbackParams) {
+    //         var data = uploadFileCallbackParams.data
+    //         data = data.split("<br>");//将返回的字符串切割成数组  
+    //         var obj_setData = {
+    //           file: {
+    //             name: data[0],//文件名称  
+    //             types: data[1],//文件类型  
+    //             size: data[2]//文件大小  
+    //           }
+    //         }
+    //         pageHandle.setData(obj_setData);//将返回的数据显示到界面上  
+    //         console.log(data);
+    //       },
+    //       fail: function () {
+    //         console.log("上传失败")
+    //       }
+    //     })
+    //   }
+    // })  
+  },
+
   /**
    * 生命周期函数--监听页面加载
    */
@@ -315,7 +346,7 @@ Page({
   getContactors: function () {
     var page = this;
     //todo:need change
-    var postData = app.globalData.userInfo;
+    var postData = app.globalData.clientInfo;
     wx.request({
       url: app.globalData.transServer + "api/user/GetAllUser",
       header: {
@@ -339,7 +370,7 @@ Page({
   getLabels: function () {
     var page = this;
     //todo:change
-    var postData = app.globalData.userInfo;
+    var postData = app.globalData.clientInfo;
     wx.request({
       url: app.globalData.transServer + "api/mail/getlabel",
       header: {
@@ -362,7 +393,7 @@ Page({
   getEmailTypes: function () {
     var page = this;
     //todo:change
-    var postData = app.globalData.userInfo;
+    var postData = app.globalData.clientInfo;
     wx.request({
       url: app.globalData.transServer + "api/mail/GetMB",
       header: {
@@ -385,37 +416,37 @@ Page({
   },
   setUpAddParam: function () {
     var data = {
-      UserId: app.globalData.userInfo.UserId,
-      Password: app.globalData.userInfo.Password,
-      Ran: app.globalData.userInfo.Ran,
-      Sign: app.globalData.userInfo.Sign,
+      UserId: app.globalData.clientInfo.UserId,
+      Password: app.globalData.clientInfo.Password,
+      Ran: app.globalData.clientInfo.Ran,
+      Sign: app.globalData.clientInfo.Sign,
       check: 1,
       MailBoxId: app.globalData.currentBox.id,
-      FromName: app.globalData.userInfo.Sign,
+      FromName: app.globalData.clientInfo.Sign,
       Subject: this.data.Subject,
       SendDate: new Date(),
       MailType: "text/html",
-      itFrom: this.getCurrentUser().username+"<"+this.data.currentSendEmail+">",
+      itFrom: this.getCurrentUser().username + "<" + this.data.currentSendEmail + ">",
       itTo: this.data.currentRecieveEmails,
       cc: this.data.currentCcEmails,
       Bcc: this.data.currentBccEmails,
       TextBody: this.data.Content,
-      MailLabel:this.data.selectedLabels,
+      MailLabel: this.data.selectedLabels,
       Type: this.data.selectedMailType
-      };
-      return data;
+    };
+    return data;
   },
-  getCurrentUser:function(){
+  getCurrentUser: function () {
     if (app.globalData.currentUser.username)
       return app.globalData.currentUser
     var currentUser;
-    for (var user in app.globalData.contactors){
-      if (user.Hxid === app.globalData.currentUser.Hxid){
+    for (var user in app.globalData.contactors) {
+      if (user.Hxid === app.globalData.currentUser.Hxid) {
         currentUser = user;
         break;
       }
     }
-    if(currentUser){
+    if (currentUser) {
       app.globalData.currentUser = user;
       return user;
     }

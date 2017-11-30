@@ -26,7 +26,7 @@
   margin-right: 15rpx;
   width: 45rpx;
   float: right;
-  margin-top: 15px;
+  margin-top: 17rpx;
 }
 
 .container .con1 .tb4 {
@@ -176,37 +176,82 @@ checkbox-group checkbox .selectItem {
   box-shadow: 0rpx 0rpx 15rpx;
 }
 
-.mask {
-  left: 0rpx;
-  top: 0rpx;
-  position: absolute;
+
+.swiper-tab {
   width: 100%;
-  height: 100%;
-  z-index: 9;
+  border-bottom: 2rpx solid #777;
+  text-align: center;
+  line-height: 80rpx;
 }
 
-.swiper-tab{    
-    width: 100%;    
-    border-bottom: 2rpx solid #777777;    
-    text-align: center;    
-    line-height: 80rpx;  
-    }    
-.swiper-tab-list{  font-size: 30rpx;    
-    display: inline-block;    
-    width: 20%;    
-    color: #777777;    
-}    
-.on{ color: #da7c0c;    
-    border-bottom: 5rpx solid #da7c0c;}    
-.swiper-box{ display: block; height: 100%; width: 100%; overflow: hidden; }    
-.swiper-box view{    
-    text-align: center;    
-} 
-.swiper-tab-list:nth-child(2){
-  width: 60%
+.swiper-tab-list {
+  font-size: 30rpx;
+  display: inline-block;
+  width: 20%;
+  color: #777;
 }
-.swiper-tab-list .con1 .tb3{
- position:absolute;
-top:-10rpx;
- 
+
+.on {
+  color: #da7c0c;
+  border-bottom: 5rpx solid #da7c0c;
+}
+
+.swiper-box {
+  display: block;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+.swiper-box view {
+  text-align: center;
+}
+
+.swiper-tab-list:nth-child(2) {
+  width: 60%;
+}
+
+.swiper-tab-list .con1 .tb3 {
+  position: absolute;
+  top: -10rpx;
+}
+
+.uploadFiles {
+  background-color: #d9d9d9;
+  height: 135rpx;
+  position: fixed;
+  width: 100%;
+  bottom: 0rpx;
+}
+
+.uploadFiles .YFS {
+  width: 135rpx;
+  height: 135rpx;
+  margin-left: 15rpx;
+  display: inline-block;
+}
+
+.chacha {
+  width: 35rpx;
+  height: 35rpx;
+  float: right;
+}
+
+.fileItem {
+  width: 100%;
+  height: 100%;
+  float: left;
+}
+
+.YFS {
+  background-image: url(https://crm.18518.net:8089/images/menus/YFS.png);
+  background-repeat: no-repeat;
+  background-position: 5px center;
+  wxcs_style_background-position: 0rpx center;
+}
+
+.fileName {
+  display: inline-block;
+  margin-top: 26px;
+  max-width: 135rpx;
 }

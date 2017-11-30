@@ -32,7 +32,7 @@ Page({
     })
   },
   onLoad: function () {
-    if (app.globalData.userInfo) {
+    if (app.globalData.clientInfo) {
       this.getEmailBoxes();
       this.getEmailBoxMenus("zn");
       this.getEmails();
@@ -89,13 +89,13 @@ Page({
   onShareAppMessage: function () {
 
   },
-  getUserInfo: function (e) {
-    app.globalData.userInfo = e.detail.userInfo
-    this.setData({
-      userInfo: e.detail.userInfo,
-      hasUserInfo: true
-    })
-  },
+  // getUserInfo: function (e) {
+  //   //app.globalData.clientInfo = e.detail.userInfo
+  //   this.setData({
+  //     userInfo: e.detail.userInfo,
+  //     hasUserInfo: true
+  //   })
+  // },
   /* 点击分类 */
   bindtab: function (e) {
     var tab = e.target.dataset.tab
@@ -144,7 +144,7 @@ Page({
   bindEmaiClick:function(e){
     var email = this.data.currentMails[parseInt(e.currentTarget.dataset.current)];
     email.Read=true;
-   console.log(e);
+    console.log(email);
     app.globalData.currentEmail = email;
     wx.navigateTo({
       url: '../Email/email',
@@ -160,7 +160,7 @@ Page({
         "TransToURL": app.globalData.server + "api/mailbox/get" //http://116.62.232.164:9898/
       },
       method: "POST",
-      data: app.globalData.userInfo,
+      data: app.globalData.clientInfo,
       success: function (e) {
         if (e.data.code = "0000") {
           var result = e.data.back;
@@ -177,7 +177,7 @@ Page({
   },
   getEmailBoxMenus: function (parentId) {
     var page = this;
-    var postData = app.globalData.userInfo;
+    var postData = app.globalData.clientInfo;
     postData.parentid = parentId;
     wx.request({
       url: app.globalData.transServer + "api/mailbox/Getmenu",
@@ -200,7 +200,7 @@ Page({
   },
   getEmails: function () {
     var page = this;
-    var postData = app.globalData.userInfo;
+    var postData = app.globalData.clientInfo;
     postData.Boxid = this.data.emaiBoxes[this.data.currentBoxIndex].id;
     postData.Act = this.data.currentBoxMenuId;
     postData.pageindex = this.data.pageIndex;

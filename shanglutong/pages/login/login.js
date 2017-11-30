@@ -53,7 +53,7 @@ Page({
           "TransToURL": app.globalData.server + "api/user/gethx" //http://116.62.232.164:9898/
         },
         method: "POST",
-        data: app.globalData.userInfo,
+        data: app.globalData.clientInfo,
         success: function (e) {
           console.log(e);
           app.globalData.currentUser.Hxid=e.back;
@@ -142,10 +142,10 @@ Page({
   },
   setUpUserInfo: function () {
     app.globalData.server = this.data.server || app.globalData.server;
-    app.globalData.userInfo.UserId = this.data.account;
-    app.globalData.userInfo.Password = md5.hex_md5(this.data.password).toLocaleUpperCase();
-    app.globalData.userInfo.Ran = 981313799;
-    app.globalData.userInfo.Sign = md5.hex_md5("123" + app.globalData.userInfo.Ran).toLocaleUpperCase();
+    app.globalData.clientInfo.UserId = this.data.account;
+    app.globalData.clientInfo.Password = md5.hex_md5(this.data.password).toLocaleUpperCase();
+    app.globalData.clientInfo.Ran = 981313799;
+    app.globalData.clientInfo.Sign = md5.hex_md5("123" + app.globalData.clientInfo.Ran).toLocaleUpperCase();
 
   }
 })

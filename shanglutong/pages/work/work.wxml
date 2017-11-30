@@ -1,7 +1,7 @@
 <view class="container">
   <view class="swiper-tab">
     <view class="swiper-tab-list cancel" data-current="0" bindtap="bindCancelSend">取消</view>
-    <view class="swiper-tab-list cancel" data-current="0" >
+    <view class="swiper-tab-list cancel" data-current="0">
       <view class='con1'>
         <input class='tb2' type='text' disabled='true' value="{{currentSendEmail}}" />
         <view class="tb3" bindtap="bindPopSelectSendEmails" data-nav="1">
@@ -37,9 +37,9 @@
   <view class="line"></view>
   <view class='con1'>
     <label class="tb1">主 题:</label>
-    <input class='tb2' value='{{Subject}}'/>
-    <view class="tb3 hide" bindtap="listqy" data-nav="1">
-      <view class="enclosure"></view>
+    <input class='tb2' value='{{Subject}}' />
+    <view class="tb3 "  bindtap="bindUploadFile" data-nav="1">
+      <view class="enclosure hide"></view>
     </view>
   </view>
   <view class="line"></view>
@@ -117,6 +117,46 @@
       <button type="primary" class="submitBtn" size="mini" bindtap='bindLabelsSubmitSelected'> 确定 </button>
     </view>
   </view>
-
+  <scroll-view class="uploadFiles {{uploadFiles.length==0?'hide':''}}" scroll-x="true">
+    <view class="YFS">
+      <image class="chacha" src='https://crm.18518.net:8089/images/delete.png'></image>
+      <view class='fileName'>sdasda.jpg</view>
+    </view>
+    <view>
+      <image class="chacha"></image>
+      <image></image>
+      <text></text>
+    </view>
+    <view>
+      <image class="chacha"></image>
+      <image></image>
+      <text></text>
+    </view>
+    <view>
+      <image class="chacha"></image>
+      <image></image>
+      <text></text>
+    </view>
+    <view>
+      <image class="chacha"></image>
+      <image></image>
+      <text></text>
+    </view>
+    <view>
+      <image class="chacha"></image>
+      <image></image>
+      <text></text>
+    </view>
+    <view>
+      <image class="chacha"></image>
+      <image></image>
+      <text></text>
+    </view>
+    <view>
+      <image class="chacha"></image>
+      <image></image>
+      <text></text>
+    </view>
+  </scroll-view>
   <view class="mask {{IsWithMskPop==true?'':'hide'}}" bindtap='bindMaskTap'></view>
 </view>

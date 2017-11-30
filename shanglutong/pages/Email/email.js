@@ -1,4 +1,5 @@
 // pages/Email/email.js
+var WxParse = require('../../wxParse/wxParse.js');
 const app = getApp()
 Page({
 
@@ -14,6 +15,8 @@ Page({
       TextBody: "weqwdsadsadasdwdadsaderqwedeasdasdawedadscsasvfdsgfeqrdwqedwasdasdcewqwqeqwfedscdasaascddsfqweqwefrsdsafgwfewrwefedwqefwdefeqwefwqfewqefwqfeswfswfswfeswfesddfsdffsdfsdwfefrwedsefdsvefsdvrgfb"
     },
     itToHide: "隐藏",
+    IsWithMaskPop:false,
+    IsPopMore:false
   },
 
   /**
@@ -23,6 +26,7 @@ Page({
     this.setData({
       emailInfo: app.globalData.currentEmail
     });
+    this.getEmailContent(app.globalData.currentEmail.Id);
     if (!this.data.emailInfo.Read) {
       this.updateReadState();
     }
@@ -36,6 +40,12 @@ Page({
     }
     this.setData({
       itToHide: itTo
+    });
+  },
+  bindMore:function(e){
+    this.setData({
+      IsWithMaskPop: true,
+      IsPopMore: true
     });
   },
   updateReadState: function () {
@@ -67,7 +77,7 @@ Page({
   },
   getEmailBoxMenus: function (parentId) {
     var page = this;
-    var postData = app.globalData.userInfo;
+    var postData = app.globalData.clientInfo;
     postData.parentid = parentId;
     wx.request({
       url: app.globalData.transServer + "api/mailbox/Getmenu",
@@ -88,12 +98,38 @@ Page({
       }
     });
   },
+  getEmailContent:function(id){
+    var page = this;
+    var param = page.getCommonParam();
+    param.MailId = id;
+    console.log(param);
+    wx.request({
+      url: app.globalData.transServer + "api/mail/Get",
+      header: {
+        "Content-Type": "application/x-www-form-urlencoded",
+        "TransToURL": app.globalData.server + "api/mail/Get" //http://116.62.232.164:9898/
+      },
+      method: "POST",
+      data: param,
+      success: function (e) {
+        if (e.data.code = "0000") {
+          page.setData({
+            emailInfo: e.data.back
+          });
+          WxParse.wxParse('article', 'html', page.data.emailInfo.htmlbody, page, 5);
+        }
+
+      }
+    });
+  },
   getCommonParam: function () {
+    console.log(app.globalData.clientInfo);
+    console.log("----------------------");
     var param = {
-      UserId: app.globalData.userInfo.UserId,
-      Password: app.globalData.userInfo.Password,
-      Ran: app.globalData.userInfo.Ran,
-      Sign: app.globalData.userInfo.Sign,
+      UserId: app.globalData.clientInfo.UserId,
+      Password: app.globalData.clientInfo.Password,
+      Ran: app.globalData.clientInfo.Ran,
+      Sign: app.globalData.clientInfo.Sign,
     }
     return param;
   }

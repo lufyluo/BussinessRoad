@@ -1,52 +1,160 @@
-.containor{
+.containor {
   width: 100%;
 }
-.subject{
+
+.subject {
   font-weight: bold;
   padding-left: 35rpx;
   width: 100%;
 }
-.SendDate{
+
+.SendDate {
   margin-top: 5rpx;
   font-size: 10px;
-   padding-left: 35rpx;
-   padding-bottom: 15rpx;
-   width: 100%;
+  padding-left: 35rpx;
+  padding-bottom: 15rpx;
+  width: 100%;
   border-bottom: 1rpx solid #9b9b9b;
 }
-.itFrom{
-   padding-left: 35rpx;
+
+.itFrom {
+  padding-left: 35rpx;
   padding-top: 15rpx;
   padding-bottom: 15rpx;
-   width: 100%;
+  width: 100%;
   border-bottom: 1rpx solid #9b9b9b;
 }
-.itFrom view,.itTo view{
+
+.itFrom view, .itTo view {
   max-width: 65%;
   border: 1rpx solid #9b9b9b;
   display: inline-block;
   padding-left: 15rpx;
   padding-right: 15rpx;
   border-radius: 20rpx;
-  background-color: whitesmoke
+  background-color: whitesmoke;
 }
-.itToHideLabel{
+
+.itToHideLabel {
   float: right;
   margin-right: 50rpx;
-  color: skyblue
+  color: skyblue;
 }
-.itTo{
+
+.itTo {
   padding-left: 35rpx;
   padding-top: 15rpx;
   padding-bottom: 15rpx;
-   width: 100%;
+  width: 100%;
   border-bottom: 1rpx solid #9b9b9b;
 }
-.TextBody{
+
+.TextBody {
   padding-left: 10rpx;
   padding-right: 20rpx;
   width: 100%;
 }
-.hide{
-  display: none;
+
+.bottomButtomContainor {
+  position: fixed;
+  height: 95rpx;
+  background-color: white;
+  bottom: 0rpx;
+  width: 100%;
+}
+
+.bottomButtomContainor image {
+  width: 80rpx;
+  height: 80rpx;
+  margin-left: 10%;
+}
+
+.bottomButtomContainor image:first-child {
+  margin-left: 5rpx;
+}
+
+.popMore {
+  position: fixed;
+  bottom: 0rpx;
+  width: 100%;
+  background-color: white;
+  z-index: 1001;
+}
+
+.popMore image {
+  width: 55rpx;
+  height: 55rpx;
+}
+
+.popMore text {
+  display: inline-block;
+  width: 100%;
+}
+
+.lineOne, .lineTwo {
+  padding-top: 15rpx;
+  padding-bottom: 15rpx;
+  border-bottom: 1rpx #e5e5e5 solid;
+}
+
+.lineOne view, .lineTwo view {
+  width: 120rpx;
+  height: 110rpx;
+  text-align: center;
+  display: inline-block;
+  margin-left: 5%;
+}
+
+.lineThree {
+  text-align: center;
+  font-size: 33rpx;
+}
+
+.add {
+  background-image: url(https://crm.18518.net:8089/images/emailImgs/add.png);
+  background-repeat: no-repeat;
+  background-position: 0px center;
+  wxcs_style_background-position: 0rpx center;
+}
+
+.top {
+  background-image: url(https://crm.18518.net:8089/images/emailImgs/top.png);
+  background-repeat: no-repeat;
+  background-position: 0px center;
+  wxcs_style_background-position: 0rpx center;
+}
+
+.tag {
+  background-image: url(https://crm.18518.net:8089/images/emailImgs/tag.png);
+  background-repeat: no-repeat;
+  background-position: 0px center;
+  wxcs_style_background-position: 0rpx center;
+}
+
+.move {
+  background-image: url(https://crm.18518.net:8089/images/emailImgs/move.png);
+  background-repeat: no-repeat;
+  background-position: 0px center;
+  wxcs_style_background-position: 0rpx center;
+}
+
+.redFlag {
+  background-image: url(https://crm.18518.net:8089/images/emailImgs/redFlag.png);
+  background-repeat: no-repeat;
+  background-position: 0px center;
+  wxcs_style_background-position: 0rpx center;
+}
+
+.delete {
+  background-image: url(https://crm.18518.net:8089/images/emailImgs/delete.png);
+  background-repeat: no-repeat;
+  background-position: 0px center;
+  wxcs_style_background-position: 0rpx center;
+}
+
+.mark {
+  background-image: url(https://crm.18518.net:8089/images/emailImgs/mark.png);
+  background-repeat: no-repeat;
+  background-position: 0px center;
+  wxcs_style_background-position: 0rpx center;
 }
