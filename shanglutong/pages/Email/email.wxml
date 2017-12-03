@@ -25,38 +25,38 @@
   </view>
   <view class="popMore {{IsPopMore==true?'':'hide'}}">
     <view class='lineOne'>
-      <view>
+      <view bindtap='bindAdd'>
         <image src='https://crm.18518.net:8089/images/emailImgs/add.png'></image>
         <text>加为客户</text>
       </view>
-      <view>
+      <view bindtap='bindMailTop' data-text="{{emailInfo.TopTime==null}}">
       <image src='https://crm.18518.net:8089/images/emailImgs/top.png'></image>
         <text>置顶</text>
       </view>
-      <view>
+      <view bindtap='bindMailTag' data-text="{{emailInfo.TopTime==null}}">
       <image src='https://crm.18518.net:8089/images/emailImgs/tag.png'></image>
         <text>标签</text>
       </view>
-      <view >
+      <view bindtap='bindMailTop' data-text="{{emailInfo.TopTime==null}}">
       <image src='https://crm.18518.net:8089/images/emailImgs/move.png'></image>
         <text>移动</text>
       </view>
     </view>
     <view class='lineTwo'>
-      <view>
+      <view bindtap='bindMailTop' data-text="{{emailInfo.TopTime==null}}">
       <image src='https://crm.18518.net:8089/images/emailImgs/redFlag.png'></image>
         <text>红旗</text>
       </view>
-      <view>
+      <view bindtap='bindMailTop' data-text="{{emailInfo.TopTime==null}}">
       <image src='https://crm.18518.net:8089/images/emailImgs/delete.png'></image>
         <text>彻底删除</text>
       </view>
-      <view >
+      <view bindtap='bindMailTop' data-text="{{emailInfo.TopTime==null}}">
       <image src='https://crm.18518.net:8089/images/emailImgs/mark.png'></image>
         <text>备注</text>
       </view>
     </view>
-    <view class='lineThree'>
+    <view class='lineThree' bindtap='bindHidePopMore'>
       取消
     </view>
   </view>

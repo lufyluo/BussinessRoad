@@ -48,6 +48,12 @@ Page({
       IsPopMore: true
     });
   },
+  bindHidePopMore:function(e){
+    this.setData({
+      IsWithMaskPop: false,
+      IsPopMore: false
+    });
+  },
   updateReadState: function () {
     var page = this;
     var postData = page.getCommonParam();

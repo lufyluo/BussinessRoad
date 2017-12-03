@@ -106,8 +106,10 @@
 }
 
 .lineThree {
-  text-align: center;
-  font-size: 33rpx;
+  text-align:center;
+font-size:35rpx;
+height:60rpx;
+
 }
 
 .add {
