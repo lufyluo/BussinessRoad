@@ -6,7 +6,7 @@
   <view class='con1 {{class1}}'>
     <view class='bt'>{{tabtext}}</view>
     <scroll-view class="box" bindscrolltoupper="menusRefresh" scroll-y="true">
-      <view class="{{currentBoxMenuId==item.id?'menuSelected':''}} clist {{item.iconAct}} " data-current='{{index}}' bindtap='bindlist' wx:for="{{currentBoxMenus}}" data-text="{{item.id}}">
+      <view class="{{currentBoxMenuId==item.id?'menuSelected':''}} clist {{item.iconAct}} " data-current='{{index}}' bindtap='bindlist' wx:for="{{currentBoxMenus}}" data-text="{{item.act}}">
         <view>{{item.name}}</view>
       </view>
     </scroll-view>
@@ -18,21 +18,24 @@
       <view class='tab3'>{{tabtext}}</view>
       <navigator url='../work/work' class='tab4'>写邮件</navigator>
     </view>
-    <scroll-view class="box" bindscrolltoupper="onEmailsPullDownRefresh" scroll-y="true">
+    <scroll-view class="box" bindscrolltoupper="onScrolltoupper" bindscrolltolower="onScrolltolower" scroll-y="true">
       <view class="blist {{toptab==0?'on':''}}">
         <view class="list {{item.Read!='是'?'on':''}}" bindtap='bindEmaiClick' data-current='{{index}}' wx:for="{{currentMails}}">
           <view class='bt'>
             <text class='bt1'>{{item.FromName}}</text>
-            <image class="emailSign {{item.star==null?'hide':''}}" src="https://crm.18518.net:8089/images/menus/BQYJ.png" mode="aspectFill">
+            <image class="emailSign {{item.star==null||item.star==false?'hide':''}}" src="https://crm.18518.net/images/menus/BQYJ.png" mode="aspectFill">
             </image>
-            <image class="emailSign {{item.redflag==null?'hide':''}}" src="https://crm.18518.net:8089/images/menus/NB.png" mode="aspectFill">
+            <image class="emailSign {{item.redflag==null||item.redflag==false?'hide':''}}" src="https://crm.18518.net/images/menus/NB.png" mode="aspectFill">
             </image>
-            <image class="emailSign {{item.AccCount>0?'':'hide'}}" src="https://crm.18518.net:8089/images/img/enclosure.png" mode="aspectFill">
+            <image class="emailSign {{item.AccCount>0?'':'hide'}}" src="https://crm.18518.net/images/img/enclosure.png" mode="aspectFill">
             </image>
           </view>
           <view class='text1'>{{item.Subject}}</view>
           <view class='text2'>{{item.formatBody}}</view>
           <text class='bt2'>{{item.formatDate}}</text>
+          <view class="emailLabelContainor">
+            <text wx:for="{{item.MailLabelShows}}" class="{{item.Id}}">{{item.Name}}</text>
+          </view>
         </view>
       </view>
     </scroll-view>

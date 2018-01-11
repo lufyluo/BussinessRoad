@@ -6,53 +6,75 @@
   <view class='SendDate'>
     {{emailInfo.SendDate}}
   </view>
+   <view class="emailLabelContainor">
+            <text wx:for="{{emailInfo.EmailLabelShows}}" class="{{item.Id}}">{{item.Name}}</text>
+  </view>
+  <view class='tags'>
+    <image class=" {{emailInfo.star==null||emailInfo.star==false?'hide':''}} emailSign" src="https://crm.18518.net/images/menus/BQYJ.png" mode="aspectFill">
+    </image>
+    <image class="{{emailInfo.redflag==null||emailInfo.redflag==false?'hide':''}} emailSign" src="https://crm.18518.net/images/menus/NB.png" mode="aspectFill">
+    </image>
+  </view>
+
   <view class='itFrom'>
     发件人：
-    <view>{{emailInfo.FromEmail}}</view>
+    <view>{{emailInfo.FromName}}</view>
     <label class='itToHideLabel' bindtap='bindItToHide'>{{itToHide}}</label>
   </view>
   <view class='itTo {{itToHide=="隐藏"?"":"hide"}}'>
     收件人：
     <view>{{emailInfo.itTo}}</view>
   </view>
+  <view class='itTo {{emailInfo.Bak==null?"hide":""}}'>
+    备注：
+    <view>{{emailInfo.Bak}}</view>
+  </view>
+  <scroll-view class='uploadFiles {{itToHide=="隐藏"?"":"hide"}} {{emailInfo.file.length>0?"":"hide"}}' scroll-x="true">
+    <view class="YFS {{item.percent==100?'blueFont':''}}" wx:for="{{emailInfo.file}}" data-text="{{item.id}}" data-state="{{item.state}}" data-path="{{item.path}}" bindtap='bindDownloadFile'>
+      <view class='fileName '>{{item.name}}  {{!item.percent?"":item.percent==100?"":item.percent}}</view>
+      <view class='fileSize'>{{item.byteToSize}}</view>
+    </view>
+  </scroll-view>
   <template is="wxParse" data="{{wxParseData:article.nodes}}" />
   <view class="bottomButtomContainor">
-    <image class="bottomBtn" bindtap='bindStar' src='https://crm.18518.net:8089/images/emailImgs/star.png'></image>
-    <image class="bottomBtn" bindtap='bindDelete' src='https://crm.18518.net:8089/images/emailImgs/delete.png'></image>
-    <image class="bottomBtn" bindtap='bindHandled' src='https://crm.18518.net:8089/images/emailImgs/handled.png'></image>
-    <image class="bottomBtn" bindtap='bindReback' src='https://crm.18518.net:8089/images/emailImgs/reBACK.png'></image>
-    <image class="bottomBtn" bindtap='bindMore' src='https://crm.18518.net:8089/images/emailImgs/more.png'></image>
+    <image class="bottomBtn" bindtap='bindMailStar' data-text="{{emailInfo.star==null?false:emailInfo.star}}" data-action="Star" src='https://crm.18518.net/images/emailImgs/star.png'></image>
+    <image class="bottomBtn" bindtap='bindMailDelete' data-text="{{emailInfo.TopTime==null}}" data-action="Delete" src='https://crm.18518.net/images/emailImgs/delete.png'></image>
+    <image class="bottomBtn" bindtap='bindHandled' data-text="{{emailInfo.Read=='否'}}" data-action="Read" src='https://crm.18518.net/images/emailImgs/handled.png'></image>
+    <image class="bottomBtn" bindtap='bindReback' src='https://crm.18518.net/images/emailImgs/reBACK.png'></image>
+    <image class="bottomBtn" bindtap='bindMore' src='https://crm.18518.net/images/emailImgs/more.png'>
+    </image>
   </view>
   <view class="popMore {{IsPopMore==true?'':'hide'}}">
     <view class='lineOne'>
-      <view bindtap='bindAdd'>
-        <image src='https://crm.18518.net:8089/images/emailImgs/add.png'></image>
+      <!-- <view bindtap='bindAdd' class='hide'>
+        <image src='https://crm.18518.net/images/emailImgs/add.png'></image>
         <text>加为客户</text>
-      </view>
-      <view bindtap='bindMailTop' data-text="{{emailInfo.TopTime==null}}">
-      <image src='https://crm.18518.net:8089/images/emailImgs/top.png'></image>
+      </view> -->
+      <view bindtap='bindMailTop' data-text="{{emailInfo.TopTime==null?false:true}}" data-action="Top">
+        <image src='https://crm.18518.net/images/emailImgs/top.png'></image>
         <text>置顶</text>
       </view>
       <view bindtap='bindMailTag' data-text="{{emailInfo.TopTime==null}}">
-      <image src='https://crm.18518.net:8089/images/emailImgs/tag.png'></image>
+        <image src='https://crm.18518.net/images/emailImgs/tag.png'></image>
         <text>标签</text>
       </view>
-      <view bindtap='bindMailTop' data-text="{{emailInfo.TopTime==null}}">
-      <image src='https://crm.18518.net:8089/images/emailImgs/move.png'></image>
+      <view bindtap='bindMailMoveTop' data-text="{{emailInfo.TopTime==null}}">
+        <image src='https://crm.18518.net/images/emailImgs/move.png'></image>
         <text>移动</text>
+      </view>
+      <view bindtap='bindMailRedFlag' data-text="{{emailInfo.redflag==null?false:emailInfo.redflag}}" data-action="Redflag">
+        <image src='https://crm.18518.net/images/emailImgs/redFlag.png'></image>
+        <text>红旗</text>
       </view>
     </view>
     <view class='lineTwo'>
-      <view bindtap='bindMailTop' data-text="{{emailInfo.TopTime==null}}">
-      <image src='https://crm.18518.net:8089/images/emailImgs/redFlag.png'></image>
-        <text>红旗</text>
-      </view>
-      <view bindtap='bindMailTop' data-text="{{emailInfo.TopTime==null}}">
-      <image src='https://crm.18518.net:8089/images/emailImgs/delete.png'></image>
+      <!--      
+      <view bindtap='bindMailDelete' class='hide' data-text="{{emailInfo.TopTime==null}}" data-action="Delete">
+        <image src='https://crm.18518.net/images/emailImgs/delete.png'></image>
         <text>彻底删除</text>
-      </view>
-      <view bindtap='bindMailTop' data-text="{{emailInfo.TopTime==null}}">
-      <image src='https://crm.18518.net:8089/images/emailImgs/mark.png'></image>
+      </view> -->
+      <view bindtap='bindPopMailMark' data-text="{{emailInfo.TopTime==null}}">
+        <image src='https://crm.18518.net/images/emailImgs/mark.png'></image>
         <text>备注</text>
       </view>
     </view>
@@ -60,5 +82,47 @@
       取消
     </view>
   </view>
-  <view class="mask {{IsWithMaskPop==true?'':'hide'}} grayMask" bindtap='bindMaskTap'></view>
+  <view class='mark {{IsPopEmailMark==true?"":"hide"}}'>
+    <input class="searchTag searchInput" bindinput="markInput"></input>
+    <button class="" type="primary" size="mini" value='确定' bindtap='bindMailMark'>确定</button>
+  </view>
+
+  <view class="selectPop emailLabels {{IsLabelsPop?'':'hide'}}">
+    <checkbox-group bindchange="bindLabelsCheckboxChange">
+      <checkbox value="{{item.name}}|{{item.Class}}" wx:for="{{labels}}">
+        <view class="selectItem">{{item.name}}</view>
+      </checkbox>
+    </checkbox-group>
+    <view class="bottomBtns">
+      <button type="primary" class="cancelBtn" size="mini" bindtap='bindHideTagPop'> 取消 </button>
+      <button type="primary" class="submitBtn" size="mini" bindtap='bindLabelsSubmitSelected'> 确定 </button>
+    </view>
+  </view>
+
+  <view class="selectPop {{IsEmailMovePop?'':'hide'}}">
+    <view class='path'>
+      <view class="all" bindtap='bindAllPath'>全部</view>
+      <view class="son" wx:for="{{MovePart.sons}}">
+        <view class="symbol">></view>
+        <view class="sonName">{{item.name}}</view>
+      </view>
+    </view>
+    <view class="boxes {{IsBoxesShow?'':'hide'}}">
+      <view class='box' bindtap='bindBoxSelect' wx:for="{{MovePart.boxes}}" data-text="{{item.id}}">{{item.name}}</view>
+    </view>
+    <radio-group class="folders {{IsFolderShow?'':'hide'}}" bindchange="radioChange">
+      <radio value="{{item.name}}|{{item.Class}}" bindtap='bindFolderSelect' wx:for="{{MovePart.Folders}}" value="{{item.id}}">
+        <view class="folder">{{item.name}}</view>
+      </radio>
+    </radio-group>    
+    <view class="bottomBtns">
+      <button type="primary" class="submitBtn" size="mini" bindtap='bindMoveSubmit'> 确定 </button>
+    </view>
+  </view>
+
+  <view class="mask1 hide grayMask" bindtap='bindHidePopMore'></view>
+  <view class="mask1 hide grayMask" bindtap='bindHidePopMore'></view>
+  <view class="mask1 {{IsLabelsPop?'':'hide'}} grayMask" bindtap='bindHideTagPop'></view>
+  <view class="mask2 {{IsPopEmailMark==true?'':'hide'}}  grayMask" bindtap='bindHideMarkPop'></view>
+  <view class="mask {{IsWithMaskPop==true?'':'hide'}} grayMask" bindtap='bindHidePopMore'></view>
 </view>

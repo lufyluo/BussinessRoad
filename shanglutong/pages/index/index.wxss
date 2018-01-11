@@ -1,109 +1,424 @@
 /**index.wxss**/
-.container{width:100%;height:100%;overflow:hidden;position:fixed;top:0;left:0;}
+
+.container {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
 /**邮件总类别**/
-.container .con3{position:absolute;top:0;left:-430rpx;width:80rpx;height:100%}
-.container .con3 .box{height:80rpx;text-align: center;vertical-align: middle;background:#D4D3D4;margin-top:10px;line-height:70rpx;font-size:45rpx;border-radius:5px;}
-.boxSelected{color:#357ABC;border:2rpx solid #357ABC}
-.container .con3.on{animation: donghua31 0.5s linear 0s 1 normal forwards;}
-@keyframes donghua31{
-	    0%   {left:-430rpx;}
-	    100% {left:0rpx;}
- }
- .container .con3.active{animation: donghua32 0.5s linear 0s 1 normal forwards;}
-@keyframes donghua32{
-	    0%   {left:0rpx;}
-	    100% {left:-430rpx;}
- }
- /**邮件子类别**/
-.container .con1{position:absolute;padding-top:80rpx;top:0;left:-350rpx;width:350rpx;height:100%;box-shadow:0 0 2rpx #767676;background: white
+
+.container .con3 {
+  position: absolute;
+  top: 0;
+  left: -430rpx;
+  width: 80rpx;
+  height: 100%;
 }
 
-.container .con1.on{animation: donghua1 0.5s linear 0s 1 normal forwards;}
-@keyframes donghua1{
-	    0%   {left:-350rpx;}
-	    100% {left:90rpx;}
- }
- .container .con1.active{animation: donghua11 0.5s linear 0s 1 normal forwards;}
-@keyframes donghua11{
-	    0%   {left:90rpx;}
-	    100% {left:-350rpx;}
- }
-
-.container .con1 .bt{position:absolute;left: 0rpx;top:0rpx; width:100%;height:80rpx;line-height:70rpx;padding-left:20rpx;color:#357abc;font-size:34rpx;}
-.container .con1 .clist{width:100%;height:65rpx;line-height:65rpx;padding-left:80rpx;color:#111010;font-size:28rpx;border-bottom:1rpx #e5e5e5 solid;background-position:30rpx center;background-repeat:no-repeat;background-size:35rpx;}
-/* .container .con1 .clist:nth-child(2){background-image:url(https://crm.18518.net:8089/images/left01.png)}
-.container .con1 .clist:nth-child(3){background-image:url(https://crm.18518.net:8089/images/left02.png)}
-.container .con1 .clist:nth-child(4){background-image:url(https://crm.18518.net:8089/images/left03.png)}
-.container .con1 .clist:nth-child(5){background-image:url(https://crm.18518.net:8089/images/left04.png)}
-.container .con1 .clist:nth-child(6){background-image:url(https://crm.18518.net:8089/images/left05.png)}
-.container .con1 .clist:nth-child(7){background-image:url(https://crm.18518.net:8089/images/left06.png)} */
-.container .con2{position:absolute;top:0;left:0rpx;width:100%;height:100%;padding-top:80rpx;box-shadow:0 0 50rpx #767676;background-color: white}
-.container .con2.on{animation: donghua2 0.5s linear 0s 1 normal forwards;}
-@keyframes donghua2{
-	    0%   {left:0rpx;}
-	    100% {left:430rpx;}
- }
-.container .con2.active{animation: donghua22 0.5s linear 0s 1 normal forwards;}
-@keyframes donghua22{
-	    0%   {left:430rpx;}
-	    100% {left:0rpx;}
- }
-.container .tab{width:100%;height:80rpx;border-bottom:2rpx #d9d9d9 solid;background:#fff;position:absolute;top:0;left:0;}
-.container .tab .tab1{position:absolute;left:20rpx;top:15rpx;width:50rpx;height:50rpx;background:url(https://crm.18518.net:8089/images/img/tab01.png) no-repeat center center;background-size:100%;color:transparent;}
-.container .tab .tab2{position:absolute;left:85rpx;top:20rpx;width:auto;height:40rpx;line-height:40rpx;background:#e03221;color:#fff;text-align:center;border-radius:20rpx;font-size:24rpx;padding:0 10rpx;}
-.container .tab .tab3{width:100%;height:80rpx;line-height:80rpx;text-align:center;color:#111010;font-size:32rpx;}
-.container .tab .tab4{width:40rpx;height:40rpx;position:absolute;right:30rpx;top:20rpx;background:url(https://crm.18518.net:8089/images/img/tab02.png) no-repeat center center;background-size:100%;color:transparent;}
-.container .box{width:100%;height:100%;position:relative;overflow-y:auto;padding:0 10rpx;}
-.container .box .blist{display:none;}
-.container .box .blist.on{display:block;}
-.container .box .list{width:100%;border-bottom:1rpx #d9d9d9 solid;padding:20rpx;}
-.container .box .list.on{background:url(https://crm.18518.net:8089/images/tb01.png) no-repeat 0 35rpx;background-size:15rpx;}
-.container .box .list .bt{width:100%;height:45rpx;line-height:45rpx;}
-.container .box .list .bt .bt1{width:80%;font-weight:bold;color:#000;font-size:26rpx;}
-.container .box .list .bt .bt2{width:20%;font-size:24rpx;color:#b2b2b2;float:right;}
-.container .box .list .text1{width:100%;color:#111010;font-size:26rpx;height:45rpx;line-height:45rpx;text-overflow:ellipsis;overflow:hidden;}
-.container .box .list .text2{width:100%;color:#bbbabb;font-size:26rpx;height:45rpx;line-height:45rpx;overflow:hidden;text-overflow:ellipsis;}
-
-
-.menuSelected{
-  background-color:#bbbabb;
+.container .con3 .box {
+  height: 80rpx;
+  text-align: center;
+  vertical-align: middle;
+  background: #d4d3d4;
+  margin-top: 10px;
+  line-height: 70rpx;
+  font-size: 45rpx;
+  border-radius: 5px;
 }
 
-.ALL{background-image:url(https://crm.18518.net:8089/images/menus/ALL.png);}
-.BH{background-image:url(https://crm.18518.net:8089/images/menus/BH.png);}
-.BQYJ{background-image:url(https://crm.18518.net:8089/images/menus/BQYJ.png);}
-.DFF{background-image:url(https://crm.18518.net:8089/images/menus/DFF.png);}
-.DGZ{background-image:url(https://crm.18518.net:8089/images/menus/DGZ.png);}
-.DSP{background-image:url(https://crm.18518.net:8089/images/menus/DSP.png);}
-.DTL{background-image:url(https://crm.18518.net:8089/images/menus/DTL.png);}
-.DTL1{background-image:url(https://crm.18518.net:8089/images/menus/DTL1.png);}
-.DTL2{background-image:url(https://crm.18518.net:8089/images/menus/DTL2.png);}
-.DTX{background-image:url(https://crm.18518.net:8089/images/menus/DTX.png);}
-.HQYJ{background-image:url(https://crm.18518.net:8089/images/menus/HQYJ.png);}
-.NB{background-image:url(https://crm.18518.net:8089/images/menus/NB.png);}
-.XBKH{background-image:url(https://crm.18518.net:8089/images/menus/XBKH.png);}
-.XP{background-image:url(https://crm.18518.net:8089/images/menus/XP.png);}
-.YFPXP{background-image:url(https://crm.18518.net:8089/images/menus/YFPXP.png);}
-.BQYJ{background-image:url(https://crm.18518.net:8089/images/menus/BQYJ.png);}
-.YSS{background-image:url(https://crm.18518.net:8089/images/menus/YSS.png);}
-.YTX{background-image:url(https://crm.18518.net:8089/images/menus/YTX.png);}
-.ZDYJ{background-image:url(https://crm.18518.net:8089/images/menus/ZDYJ.png);}
-.SJX{background-image:url(https://crm.18518.net:8089/images/menus/SJX.png);}
-.CGX{background-image:url(https://crm.18518.net:8089/images/menus/CGX.png);}
-.YFS{background-image:url(https://crm.18518.net:8089/images/menus/YFS.png);}
-.LJX{background-image:url(https://crm.18518.net:8089/images/menus/LJX.png);}
-.YSC{background-image:url(https://crm.18518.net:8089/images/menus/YSC.png);}
-.WJJ{background-image:url(https://crm.18518.net:8089/images/menus/WJJ73.png);}
-.WJJ209{background-image:url(https://crm.18518.net:8089/images/menus/WJJ73.png);}
-
-.emailSign{
-  width:15px;
-height:15px;
-display:inline-block;
-overflow:hidden;
-
+.boxSelected {
+  color: #357abc;
+  border: 2rpx solid #357abc;
 }
 
-.hide{
-  display: none
+.container .con3.on {
+  animation: donghua31 0.5s linear 0s 1 normal forwards;
+}
+
+@keyframes donghua31 {
+  0% {
+    left: -430rpx;
+  }
+
+  100% {
+    left: 0rpx;
+  }
+}
+
+.container .con3.active {
+  animation: donghua32 0.5s linear 0s 1 normal forwards;
+}
+
+@keyframes donghua32 {
+  0% {
+    left: 0rpx;
+  }
+
+  100% {
+    left: -430rpx;
+  }
+}
+
+/**邮件子类别**/
+
+.container .con1 {
+  position: absolute;
+  padding-top: 80rpx;
+  top: 0;
+  left: -350rpx;
+  width: 350rpx;
+  height: 100%;
+  box-shadow: 0 0 2rpx #767676;
+  background: white;
+}
+
+.container .con1.on {
+  animation: donghua1 0.5s linear 0s 1 normal forwards;
+}
+
+@keyframes donghua1 {
+  0% {
+    left: -350rpx;
+  }
+
+  100% {
+    left: 90rpx;
+  }
+}
+
+.container .con1.active {
+  animation: donghua11 0.5s linear 0s 1 normal forwards;
+}
+
+@keyframes donghua11 {
+  0% {
+    left: 90rpx;
+  }
+
+  100% {
+    left: -350rpx;
+  }
+}
+
+.container .con1 .bt {
+  position: absolute;
+  left: 0rpx;
+  top: 0rpx;
+  width: 100%;
+  height: 80rpx;
+  line-height: 70rpx;
+  padding-left: 20rpx;
+  color: #357abc;
+  font-size: 34rpx;
+}
+
+.container .con1 .clist {
+  width: 100%;
+  height: 65rpx;
+  line-height: 65rpx;
+  padding-left: 80rpx;
+  color: #111010;
+  font-size: 28rpx;
+  border-bottom: 1rpx #e5e5e5 solid;
+  background-position: 30rpx center;
+  background-repeat: no-repeat;
+  background-size: 35rpx;
+}
+
+/* .container .con1 .clist:nth-child(2){background-image:url(https://app.jingdouyun.xin/images/left01.png)}
+.container .con1 .clist:nth-child(3){background-image:url(https://app.jingdouyun.xin/images/left02.png)}
+.container .con1 .clist:nth-child(4){background-image:url(https://app.jingdouyun.xin/images/left03.png)}
+.container .con1 .clist:nth-child(5){background-image:url(https://app.jingdouyun.xin/images/left04.png)}
+.container .con1 .clist:nth-child(6){background-image:url(https://app.jingdouyun.xin/images/left05.png)}
+.container .con1 .clist:nth-child(7){background-image:url(https://app.jingdouyun.xin/images/left06.png)} */
+
+.container .con2 {
+  position: absolute;
+  top: 0;
+  left: 0rpx;
+  width: 100%;
+  height: 100%;
+  padding-top: 80rpx;
+  box-shadow: 0 0 50rpx #767676;
+  background-color: white;
+}
+
+.container .con2.on {
+  animation: donghua2 0.5s linear 0s 1 normal forwards;
+}
+
+@keyframes donghua2 {
+  0% {
+    left: 0rpx;
+  }
+
+  100% {
+    left: 430rpx;
+  }
+}
+
+.container .con2.active {
+  animation: donghua22 0.5s linear 0s 1 normal forwards;
+}
+
+@keyframes donghua22 {
+  0% {
+    left: 430rpx;
+  }
+
+  100% {
+    left: 0rpx;
+  }
+}
+
+.container .tab {
+  width: 100%;
+  height: 80rpx;
+  border-bottom: 2rpx #d9d9d9 solid;
+  background: #fff;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.container .tab .tab1 {
+  position: absolute;
+  left: 20rpx;
+  top: 15rpx;
+  width: 50rpx;
+  height: 50rpx;
+  background: url(https://app.jingdouyun.xin/images/img/tab01.png) no-repeat center center;
+  background-size: 100%;
+  color: transparent;
+}
+
+.container .tab .tab2 {
+  position: absolute;
+  left: 85rpx;
+  top: 20rpx;
+  width: auto;
+  height: 40rpx;
+  line-height: 40rpx;
+  background: #e03221;
+  color: #fff;
+  text-align: center;
+  border-radius: 20rpx;
+  font-size: 24rpx;
+  padding: 0 10rpx;
+}
+
+.container .tab .tab3 {
+  width: 100%;
+  height: 80rpx;
+  line-height: 80rpx;
+  text-align: center;
+  color: #111010;
+  font-size: 32rpx;
+}
+
+.container .tab .tab4 {
+  width: 40rpx;
+  height: 40rpx;
+  position: absolute;
+  right: 30rpx;
+  top: 20rpx;
+  background: url(https://app.jingdouyun.xin/images/img/tab02.png) no-repeat center center;
+  background-size: 100%;
+  color: transparent;
+}
+
+.container .box {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow-y: auto;
+  padding: 0 10rpx;
+}
+
+.container .box .blist {
+  display: none;
+}
+
+.container .box .blist.on {
+  display: block;
+}
+
+.container .box .list {
+  width: 100%;
+  border-bottom: 1rpx #d9d9d9 solid;
+  padding: 20rpx;
+}
+
+.container .box .list.on {
+  background: url(https://app.jingdouyun.xin/images/tb01.png) no-repeat 0 35rpx;
+  background-size: 15rpx;
+}
+
+.container .box .list .bt {
+  width: 100%;
+  height: 45rpx;
+  line-height: 45rpx;
+}
+
+.container .box .list .bt .bt1 {
+  width: 80%;
+  font-weight: bold;
+  color: #000;
+  font-size: 26rpx;
+}
+
+.container .box .list .bt .bt2 {
+  width: 20%;
+  font-size: 24rpx;
+  color: #b2b2b2;
+  float: right;
+}
+
+.container .box .list .text1 {
+  width: 100%;
+  color: #111010;
+  font-size: 26rpx;
+  height: 45rpx;
+  line-height: 45rpx;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.container .box .list .text2 {
+  width: 100%;
+  color: #bbbabb;
+  font-size: 26rpx;
+  height: 45rpx;
+  line-height: 45rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.menuSelected {
+  background-color: #bbbabb;
+}
+
+.ALL {
+  background-image: url(https://app.jingdouyun.xin/images/menus/ALL.png);
+}
+.ALLR {
+  background-image: url(https://app.jingdouyun.xin/images/menus/ALLR.png);
+}
+.ALLS {
+  background-image: url(https://app.jingdouyun.xin/images/menus/ALLS.png);
+}
+.BH {
+  background-image: url(https://app.jingdouyun.xin/images/menus/BH.png);
+}
+
+.BQYJ {
+  background-image: url(https://app.jingdouyun.xin/images/menus/BQYJ.png);
+}
+
+.DFF {
+  background-image: url(https://app.jingdouyun.xin/images/menus/DFF.png);
+}
+
+.DGZ {
+  background-image: url(https://app.jingdouyun.xin/images/menus/DGZ.png);
+}
+
+.DSP {
+  background-image: url(https://app.jingdouyun.xin/images/menus/DSP.png);
+}
+
+.DTL {
+  background-image: url(https://app.jingdouyun.xin/images/menus/DTL.png);
+}
+
+.DTL1 {
+  background-image: url(https://app.jingdouyun.xin/images/menus/DTL1.png);
+}
+
+.DTL2 {
+  background-image: url(https://app.jingdouyun.xin/images/menus/DTL2.png);
+}
+
+.DTX {
+  background-image: url(https://app.jingdouyun.xin/images/menus/DTX.png);
+}
+
+.HQYJ {
+  background-image: url(https://app.jingdouyun.xin/images/menus/HQYJ.png);
+}
+
+.NB {
+  background-image: url(https://app.jingdouyun.xin/images/menus/NB.png);
+}
+
+.XBKH {
+  background-image: url(https://app.jingdouyun.xin/images/menus/XBKH.png);
+}
+
+.XP {
+  background-image: url(https://app.jingdouyun.xin/images/menus/XP.png);
+}
+
+.YFPXP {
+  background-image: url(https://app.jingdouyun.xin/images/menus/YFPXP.png);
+}
+
+.BQYJ {
+  background-image: url(https://app.jingdouyun.xin/images/menus/BQYJ.png);
+}
+
+.YSS {
+  background-image: url(https://app.jingdouyun.xin/images/menus/YSS.png);
+}
+
+.YTX {
+  background-image: url(https://app.jingdouyun.xin/images/menus/YTX.png);
+}
+
+.ZDYJ {
+  background-image: url(https://app.jingdouyun.xin/images/menus/ZDYJ.png);
+}
+
+.SJX {
+  background-image: url(https://app.jingdouyun.xin/images/menus/SJX.png);
+}
+
+.CGX {
+  background-image: url(https://app.jingdouyun.xin/images/menus/CGX.png);
+}
+
+.YFS {
+  background-image: url(https://app.jingdouyun.xin/images/menus/YFS.png);
+}
+
+.LJX {
+  background-image: url(https://app.jingdouyun.xin/images/menus/LJX.png);
+}
+
+.YSC {
+  background-image: url(https://app.jingdouyun.xin/images/menus/YSC.png);
+}
+
+.WJJ {
+  background-image: url(https://app.jingdouyun.xin/images/menus/WJJ73.png);
+}
+
+.WJJ209 {
+  background-image: url(https://app.jingdouyun.xin/images/menus/WJJ73.png);
+}
+
+.emailSign {
+  width: 15px;
+  height: 15px;
+  display: inline-block;
+  overflow: hidden;
+}
+
+
+.hide {
+  display: none;
 }

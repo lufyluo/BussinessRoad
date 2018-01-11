@@ -60,12 +60,12 @@ App({
     })
   },
   globalData: {
-    transServer: 'https://crm.18518.net:18080/',//'https://crm.18518.net:18088/',//
-    server: 'http://116.62.232.164:9898/',//'http://crm.18518.net:9898/',//
+    transServer: 'https://app.jingdouyun.xin/',//'https://www.lufyluo.xyz',//http://localhost:18088/',//'https://crm.18518.net/',//
+    server: 'http://116.62.208.170:9898/',//'http://localhost:9898/',//'http://116.62.232.164:9898/',//http://118.31.43.242:8585/', //'http://116.62.232.164:9898/',//'http://crm.18518.net:9898/',//
     currentUser:{},
     currentEmail:{},
     clientInfo: {
-      UserId:'wbf',
+      UserId:'info',
       Password:'96E79218965EB72C92A549DD5A330112',
       Ran: 981313799,
       Sign:'C07163FDF49F51FB7C7CB3DCCC2E9BD3'

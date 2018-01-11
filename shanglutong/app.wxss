@@ -58,10 +58,55 @@ button::after{border:0;}
   height: 100%;
   z-index: 9;
 }
+.mask1 {
+  left: 0rpx;
+  top: 0rpx;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  z-index: 11;
+}
+.mask2 {
+  left: 0rpx;
+  top: 0rpx;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  z-index: 11;
+}
 .grayMask{
   background-color: #e9e9e9;
   opacity:0.5;
 }
 .hide{
     display:none
+}
+.emailLabelContainor text {
+  border-radius: 35rpx;
+  color: #fff;
+  font-size:25rpx;
+margin-left:15rpx;
+padding-left:5rpx;
+padding-right:5rpx;
+}
+.emailLabelContainor text:first-child{
+  margin-left:0rpx;
+}
+.emailLabelContainor .maillabel-10{
+  background-color: #b1b1b1;
+}
+.emailLabelContainor .maillabel-8{
+  background-color: #409393;
+}
+.emailLabelContainor .maillabel-4{
+  background-color: #F8AC59;/*报价*/
+}
+.emailLabelContainor .maillabel-11{
+  background-color: #E3A325;/*询盘*/
+}
+.emailLabelContainor .maillabel-5{
+  background-color: #F28792; /*内部邮件*/
+}
+.emailLabelContainor .maillabel-12{
+  background-color: #CC0000; /*合同*/
 }

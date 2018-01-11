@@ -250,33 +250,34 @@ Page({
     });
   },
   bindUploadFile: function (e) {
-    // var pageHandle = this;
-    // wx.chooseImage({
-    //   success: function (chooseImageCallbackParams) {
-    //     var tempFilePaths = chooseImageCallbackParams.tempFilePaths
-    //     wx.uploadFile({
-    //       url: SERVER_URL,
-    //       filePath: tempFilePaths[0],
-    //       name: 'file',
-    //       success: function (uploadFileCallbackParams) {
-    //         var data = uploadFileCallbackParams.data
-    //         data = data.split("<br>");//将返回的字符串切割成数组  
-    //         var obj_setData = {
-    //           file: {
-    //             name: data[0],//文件名称  
-    //             types: data[1],//文件类型  
-    //             size: data[2]//文件大小  
-    //           }
-    //         }
-    //         pageHandle.setData(obj_setData);//将返回的数据显示到界面上  
-    //         console.log(data);
-    //       },
-    //       fail: function () {
-    //         console.log("上传失败")
-    //       }
-    //     })
-    //   }
-    // })  
+    //TODO:上传
+    var pageHandle = this;
+    wx.chooseImage({
+      success: function (chooseImageCallbackParams) {
+        var tempFilePaths = chooseImageCallbackParams.tempFilePaths
+        wx.uploadFile({
+          url: SERVER_URL,
+          filePath: tempFilePaths[0],
+          name: 'file',
+          success: function (uploadFileCallbackParams) {
+            var data = uploadFileCallbackParams.data
+            data = data.split("<br>");//将返回的字符串切割成数组  
+            var obj_setData = {
+              file: {
+                name: data[0],//文件名称  
+                types: data[1],//文件类型  
+                size: data[2]//文件大小  
+              }
+            }
+            pageHandle.setData(obj_setData);//将返回的数据显示到界面上  
+            console.log(data);
+          },
+          fail: function () {
+            console.log("上传失败")
+          }
+        })
+      }
+    })  
   },
 
   /**
@@ -292,6 +293,13 @@ Page({
     this.getContactors();
     this.getLabels();
     this.getEmailTypes();
+    if (options) {
+      this.data.currentSelectedRecieveEmails.push(options.Recs)
+      this.setData({
+        currentRecieveEmails: options.Recs,
+        currentSelectedRecieveEmails: this.data.currentSelectedRecieveEmails
+      });
+    }
   },
 
   /**

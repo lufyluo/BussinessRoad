@@ -39,14 +39,14 @@
     <label class="tb1">主 题:</label>
     <input class='tb2' value='{{Subject}}' />
     <view class="tb3 "  bindtap="bindUploadFile" data-nav="1">
-      <view class="enclosure hide"></view>
+      <view class="enclosure"></view>
     </view>
   </view>
   <view class="line"></view>
   <view class='con1'>
-    <label class="tb4" bindtap='bindLabelTap'>添加标签</label>
-    <input class='tb5' disabled='true' placeholder="" />
-    <view class="tb6" bindtap="bindEmaiTypePop" data-nav="1">
+    <label class="tb4 labelSelector" bindtap='bindLabelTap'>添加标签</label>
+    <input class='tb5 shortInput' disabled='true' placeholder="" />
+    <view class="tb6 templateSelector" bindtap="bindEmaiTypePop" data-nav="1">
       <view class="emailType">{{defaultType.Name}}</view>
       <view class="icon"></view>
     </view>
@@ -119,7 +119,7 @@
   </view>
   <scroll-view class="uploadFiles {{uploadFiles.length==0?'hide':''}}" scroll-x="true">
     <view class="YFS">
-      <image class="chacha" src='https://crm.18518.net:8089/images/delete.png'></image>
+      <image class="chacha" src='https://crm.18518.net/images/delete.png'></image>
       <view class='fileName'>sdasda.jpg</view>
     </view>
     <view>

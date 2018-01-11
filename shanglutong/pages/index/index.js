@@ -22,7 +22,8 @@ Page({
     unread: 0,
     count: 0,
     pageIndex: 1,
-    pageSize: 100
+    pageSize: 100,
+    isLoading:false
   },
 
   //事件处理函数
@@ -31,51 +32,39 @@ Page({
       url: '../logs/logs'
     })
   },
-  onLoad: function () {
+  onLoad: function (options) {
+    console.log(options);
     if (app.globalData.clientInfo) {
       this.getEmailBoxes();
       this.getEmailBoxMenus("zn");
       this.getEmails();
     }
   },
-  /**
- * 生命周期函数--监听页面初次渲染完成
- */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onEmailsPullDownRefresh: function () {
-    wx.startPullDownRefresh()
-    console.log(1);
-
+  onScrolltoupper: function () {
+    if(this.data.isLoading)
+    return;
+    var tempIndex = this.data.pageIndex;
+    this.getEmails();
+    wx.showToast({
+      title: '刷新中...',
+      icon:'loading'
+    })
     //wx.stopPullDownRefresh()
   },
-
+  onScrolltolower:function(){
+    if (this.data.isLoading)
+      return;
+    this.data.pageIndex ++;
+    this.getEmails();
+    wx.showToast({
+      title: '刷新中...',
+      icon: 'loading'
+    })
+  },
   /**
    * 页面上拉触底事件的处理函数
    */
@@ -118,8 +107,8 @@ Page({
   bindBoxSelected: function (e) {
     this.setData({ currentBoxIndex: e.target.dataset.text });
     var id = "";
-    if (this.data.currentBoxIndex!==0){
-      id +="m_";
+    if (this.data.currentBoxIndex !== 0) {
+      id += "m_";
     }
     var curBox = this.data.emaiBoxes[this.data.currentBoxIndex]
     id += curBox.id;
@@ -132,19 +121,14 @@ Page({
     this.setData({
       currentBoxMenuId: e.currentTarget.dataset.text
     })
-    if (this.data.toptab == e.currentTarget.dataset.current) {
-    } else {
-      this.setData({
-        tabtext: this.data.currentBoxMenus[parseInt(e.currentTarget.dataset.current)].name,
-        pageIndex:1
-      })
-    }
+    this.setData({
+      tabtext: this.data.currentBoxMenus[parseInt(e.currentTarget.dataset.current)].name,
+      pageIndex: 1
+    });
     this.getEmails();
   },
-  bindEmaiClick:function(e){
+  bindEmaiClick: function (e) {
     var email = this.data.currentMails[parseInt(e.currentTarget.dataset.current)];
-    email.Read=true;
-    console.log(email);
     app.globalData.currentEmail = email;
     wx.navigateTo({
       url: '../Email/email',
@@ -152,7 +136,7 @@ Page({
   },
   getEmailBoxes: function () {
     var page = this;
-    var item = page.data.emaiBoxes[0];    
+    var item = page.data.emaiBoxes[0];
     wx.request({
       url: app.globalData.transServer + "api/mailbox/get",
       header: {
@@ -164,12 +148,14 @@ Page({
       success: function (e) {
         if (e.data.code = "0000") {
           var result = e.data.back;
+          console.log(result);
           result.splice(0, 0, item);
-          page.setupBoxName(result);
-          page.setupGlobalBox(result,0);
+          result = page.setupBoxName(result);
+          console.log(result);
+          page.setupGlobalBox(result, 0);
           page.setData({
             emaiBoxes: result
-          });         
+          });
         }
 
       }
@@ -200,8 +186,9 @@ Page({
   },
   getEmails: function () {
     var page = this;
+    page.data.isLoading = true;
     var postData = app.globalData.clientInfo;
-    postData.Boxid = this.data.emaiBoxes[this.data.currentBoxIndex].id;
+    postData.BoxId = this.data.emaiBoxes[this.data.currentBoxIndex].id;
     postData.Act = this.data.currentBoxMenuId;
     postData.pageindex = this.data.pageIndex;
     postData.pagemax = this.data.pageSize;
@@ -217,48 +204,73 @@ Page({
       success: function (e) {
         if (e.data.code = "0000") {
           page.setupList(e.data.back.list);
-          // if (postData.pageindex ===1){
-          //   page.data.currentMails.length=0;
-          // }
+          if (postData.pageindex ===1){
+            page.data.currentMails.length=0;
+          }
           var result = page.data.currentMails.concat(e.data.back.list);
           page.setData({
-            currentMails: e.data.back.list,
+            currentMails: result,
             unread: e.data.back.unread,
             count: e.data.back.count,
             pageIndex: e.data.back.index
           });
+          page.data.isLoading = false;
         }
 
       }
     });
   },
-  setupGlobalBox:function(arr,index){
-    app.globalData.emailBoxes = arr;
-    if (arr[0] && !arr[0].email){
+  setupGlobalBox: function (arr, index) {
+    if (arr.length >= 2 && arr[0] && !arr[0].email) {
       arr[0].email = arr[1].email;
     }
+    app.globalData.emailBoxes = arr;
     app.globalData.currentBox = arr[index];
   },
   setupBoxName: function (arr) {
+    var newArray = [];
     for (var i = 0, l = arr.length; i < l; i++) {
-      arr[i].showName = arr[i].name.slice(0, 1);
+      if (arr[i].name) {
+        console.log(arr[i].name);
+        arr[i].showName = arr[i].name.slice(0, 1);
+        newArray.push(arr[i]);
+      }
     }
+    return newArray;
   },
   setupList: function (arr) {
-    var page =this;
+    var page = this;
     for (var item in arr) {
       var date = new Date(arr[item].MailDate);
       arr[item].formatDate = page.getListDate(date);
-      arr[item].formatBody = arr[item].textbody.slice(0,400);
+      arr[item].formatBody = arr[item].textbody;
+      arr[item].MailLabelShows = this.getLabelArr(arr[item].MailLabel)
     }
+  },
+  getLabelArr: function (labelString) {
+    if (!labelString)
+    return null;
+    var arr = labelString.split(",");
+    var newArr = new Array();
+    for (var item in arr) {
+      if (!arr[item] || arr[item] == "")
+        continue;
+      var tempArr = arr[item].split("|");
+      newArr.push({
+        Name: tempArr[0],
+        Id: tempArr[1],
+        Label: arr[item]
+      });
+    }
+    return newArr;
   },
   setupEmaiMenus: function (arr) {
     var page = this;
     for (var item in arr) {
-      if (arr[item].act.indexOf("WJJ")>=0){
+      if (arr[item].act.indexOf("WJJ") >= 0) {
         arr[item].iconAct = "WJJ";
         continue;
-      }      
+      }
       arr[item].iconAct = arr[item].act;
     }
     return arr;
@@ -266,13 +278,67 @@ Page({
   getListDate: function (date) {
     var today = new Date;
     var dateString = '';
-    if (date.getFullYear() === today.getFullYear() &&date.getMonth() === today.getMonth()&&date.getDay() - today.getDay() === -1)
+    if (date.getFullYear() === today.getFullYear() && date.getMonth() === today.getMonth() && date.getDay() - today.getDay() === -1)
     { dateString += "昨天"; }
-    else if (date.getFullYear() === today.getFullYear() && date.getMonth() === today.getMonth() &&date.getDay() - today.getDay() ===0 )
+    else if (date.getFullYear() === today.getFullYear() && date.getMonth() === today.getMonth() && date.getDay() - today.getDay() === 0)
     { dateString += "今天"; }
     else
     { dateString += date.getMonth() + "月" + date.getDay() + "日" + " "; }
     dateString += date.getHours() + ":" + date.getMinutes();
     return dateString;
   }
+  , removeByEmailId: function (arr, val) {
+    for (var i = 0; i < arr.length; i++) {
+      if (arr[i].Id == val) {
+        arr.splice(i, 1);
+        break;
+      }
+    }
+  },
+  setEmailFlag: function (arr, id, flag) {
+    for (var i = 0; i < arr.length; i++) {
+      if (arr[i].Id == id) {
+        arr[i].redflag = flag;
+        break;
+      }
+    }
+  },
+  setEmailStar: function (arr, id, star) {
+    for (var i = 0; i < arr.length; i++) {
+      if (arr[i].Id == id) {
+        arr[i].star = star;
+        break;
+      }
+    }
+  },
+  setEmailRead: function (arr, id, read) {
+    for (var i = 0; i < arr.length; i++) {
+      if (arr[i].Id == id) {
+        arr[i].Read = read;
+        break;
+      }
+    }
+  },
+  setEmailLabel: function (arr, id, emailInfo) {
+    for (var i = 0; i < arr.length; i++) {
+      if (arr[i].Id == id) {
+        arr[i].MailLabelShows = emailInfo.EmailLabelShows;
+        this.setData({
+          currentMails: arr
+        });
+        break;
+      }
+    }
+  },
+  setRead: function (arr, id, read) {
+    for (var i = 0; i < arr.length; i++) {
+      if (arr[i].Id == id) {
+        arr[i].Read = read;
+        this.setData({
+          currentMails: arr
+        });
+        break;
+      }
+    }
+  },
 })

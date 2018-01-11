@@ -159,7 +159,7 @@ checkbox-group checkbox .selectItem {
 }
 
 .enclosure {
-  background-image: url(https://crm.18518.net:8089/images/img/enclosure.png);
+  background-image: url(https://app.jingdouyun.xin/images/img/enclosure.png);
   width: 55rpx;
   height: 55rpx;
   background-repeat: no-repeat;
@@ -244,7 +244,7 @@ checkbox-group checkbox .selectItem {
 }
 
 .YFS {
-  background-image: url(https://crm.18518.net:8089/images/menus/YFS.png);
+  background-image: url(https://app.jingdouyun.xin/images/menus/YFS.png);
   background-repeat: no-repeat;
   background-position: 5px center;
   wxcs_style_background-position: 0rpx center;
@@ -254,4 +254,19 @@ checkbox-group checkbox .selectItem {
   display: inline-block;
   margin-top: 26px;
   max-width: 135rpx;
+}
+
+.shortInput{
+  width: 100rpx;
+}
+.templateSelector{
+  float:right;
+margin-right:25rpx;
+margin-top:20rpx;
+
+}
+.labelSelector{
+  margin-top:25rpx;
+float:left;
+
 }
