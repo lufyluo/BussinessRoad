@@ -23,11 +23,11 @@
         <view class="list {{item.Read!='是'?'on':''}}" bindtap='bindEmaiClick' data-current='{{index}}' wx:for="{{currentMails}}">
           <view class='bt'>
             <text class='bt1'>{{item.FromName}}</text>
-            <image class="emailSign {{item.star==null||item.star==false?'hide':''}}" src="https://crm.18518.net/images/menus/BQYJ.png" mode="aspectFill">
+            <image class=" {{item.star==null||item.star==false?'hide':'emailSign'}}" src="https://app.jingdouyun.xin/images/menus/BQYJ.png" mode="aspectFill">
             </image>
-            <image class="emailSign {{item.redflag==null||item.redflag==false?'hide':''}}" src="https://crm.18518.net/images/menus/NB.png" mode="aspectFill">
+            <image class=" {{item.redflag==null||item.redflag==false?'hide':'emailSign'}}" src="https://app.jingdouyun.xin/images/menus/NB.png" mode="aspectFill">
             </image>
-            <image class="emailSign {{item.AccCount>0?'':'hide'}}" src="https://crm.18518.net/images/img/enclosure.png" mode="aspectFill">
+            <image class=" {{item.AccCount>0?'emailSign':'hide'}}" src="https://app.jingdouyun.xin/images/img/enclosure.png" mode="aspectFill">
             </image>
           </view>
           <view class='text1'>{{item.Subject}}</view>

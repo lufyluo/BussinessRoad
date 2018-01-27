@@ -119,7 +119,7 @@
   </view>
   <scroll-view class="uploadFiles {{uploadFiles.length==0?'hide':''}}" scroll-x="true">
     <view class="YFS">
-      <image class="chacha" src='https://crm.18518.net/images/delete.png'></image>
+      <image class="chacha" src='https://app.jingdouyun.xin/images/delete.png'></image>
       <view class='fileName'>sdasda.jpg</view>
     </view>
     <view>

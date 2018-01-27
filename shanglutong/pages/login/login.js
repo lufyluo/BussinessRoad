@@ -36,7 +36,12 @@ Page({
     })
   },
   // 登录  
-  login: function () {
+  login: function () {    
+    wx.showToast({
+      title: '登陆中',
+      icon: 'loading',
+      duration: 30000
+    })
     if (this.data.account.length == 0 || this.data.password.length == 0) {
       wx.showToast({
         title: '用户名和密码不能为空',
@@ -58,6 +63,7 @@ Page({
           console.log(e);
           app.globalData.currentUser.Hxid=e.back;
           if (e && e.data.code === "0000") {
+            wx.hideToast();
             wx.navigateTo({
               url: '../index/index',
               success: function (res) { },

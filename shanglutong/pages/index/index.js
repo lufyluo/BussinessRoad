@@ -169,7 +169,7 @@ Page({
       url: app.globalData.transServer + "api/mailbox/Getmenu",
       header: {
         "Content-Type": "application/x-www-form-urlencoded",
-        "TransToURL": app.globalData.server + "api/mailbox/Getmenu" //http://116.62.232.164:9898/
+        "TransToURL": app.globalData.server + "api/mailbox/Getmenu" 
       },
       method: "POST",
       data: postData,

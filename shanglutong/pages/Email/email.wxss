@@ -113,49 +113,49 @@
 }
 
 .add {
-  background-image: url(https://app.jingdouyun.xin/images/emailImgs/add.png);
+  background-image: url(https://app.jingdouyun.xin/images/menus/add.png);
   background-repeat: no-repeat;
   background-position: 0px center;
   wxcs_style_background-position: 0rpx center;
 }
 
 .top {
-  background-image: url(https://app.jingdouyun.xin/images/emailImgs/top.png);
+  background-image: url(https://app.jingdouyun.xin/images/menus/top.png);
   background-repeat: no-repeat;
   background-position: 0px center;
   wxcs_style_background-position: 0rpx center;
 }
 
 .tag {
-  background-image: url(https://app.jingdouyun.xin/images/emailImgs/tag.png);
+  background-image: url(https://app.jingdouyun.xin/images/menus/tag.png);
   background-repeat: no-repeat;
   background-position: 0px center;
   wxcs_style_background-position: 0rpx center;
 }
 
 .move {
-  background-image: url(https://app.jingdouyun.xin/images/emailImgs/move.png);
+  background-image: url(https://app.jingdouyun.xin/images/menus/move.png);
   background-repeat: no-repeat;
   background-position: 0px center;
   wxcs_style_background-position: 0rpx center;
 }
 
 .redFlag {
-  background-image: url(https://app.jingdouyun.xin/images/emailImgs/redFlag.png);
+  background-image: url(https://app.jingdouyun.xin/images/menus/redFlag.png);
   background-repeat: no-repeat;
   background-position: 0px center;
   wxcs_style_background-position: 0rpx center;
 }
 
 .delete {
-  background-image: url(https://app.jingdouyun.xin/images/emailImgs/delete.png);
+  background-image: url(https://app.jingdouyun.xin/images/menus/delete.png);
   background-repeat: no-repeat;
   background-position: 0px center;
   wxcs_style_background-position: 0rpx center;
 }
 
 .mark {
-  background-image: url(https://app.jingdouyun.xin/images/emailImgs/mark.png);
+  background-image: url(https://app.jingdouyun.xin/images/menus/mark.png);
   background-repeat: no-repeat;
   background-position: 0px center;
   wxcs_style_background-position: 0rpx center;

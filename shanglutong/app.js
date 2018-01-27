@@ -60,8 +60,8 @@ App({
     })
   },
   globalData: {
-    transServer: 'https://app.jingdouyun.xin/',//'https://www.lufyluo.xyz',//http://localhost:18088/',//'https://crm.18518.net/',//
-    server: 'http://116.62.208.170:9898/',//'http://localhost:9898/',//'http://116.62.232.164:9898/',//http://118.31.43.242:8585/', //'http://116.62.232.164:9898/',//'http://crm.18518.net:9898/',//
+    transServer: 'http://localhost:18088/',//'https://app.jingdouyun.xin/',//'https://www.lufyluo.xyz',//'https://crm.18518.net/',//
+    server: 'http://116.62.208.170:8989/',//'http://localhost:9898/',//'http://app.jingdouyun.xin:9898/',//'http://116.62.208.170:9898/',//http://118.31.43.242:8585/', //'http://crm.18518.net:9898/',//
     currentUser:{},
     currentEmail:{},
     clientInfo: {

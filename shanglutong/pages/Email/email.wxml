@@ -10,9 +10,9 @@
             <text wx:for="{{emailInfo.EmailLabelShows}}" class="{{item.Id}}">{{item.Name}}</text>
   </view>
   <view class='tags'>
-    <image class=" {{emailInfo.star==null||emailInfo.star==false?'hide':''}} emailSign" src="https://crm.18518.net/images/menus/BQYJ.png" mode="aspectFill">
+    <image class="{{emailInfo.star==null||emailInfo.star==false?'hide':'emailSign'}} " src="https://app.jingdouyun.xin/images/menus/BQYJ.png" mode="aspectFill">
     </image>
-    <image class="{{emailInfo.redflag==null||emailInfo.redflag==false?'hide':''}} emailSign" src="https://crm.18518.net/images/menus/NB.png" mode="aspectFill">
+    <image class="{{emailInfo.redflag==null||emailInfo.redflag==false?'hide':'emailSign'}}" src="https://app.jingdouyun.xin/images/menus/NB.png" mode="aspectFill">
     </image>
   </view>
 
@@ -37,44 +37,44 @@
   </scroll-view>
   <template is="wxParse" data="{{wxParseData:article.nodes}}" />
   <view class="bottomButtomContainor">
-    <image class="bottomBtn" bindtap='bindMailStar' data-text="{{emailInfo.star==null?false:emailInfo.star}}" data-action="Star" src='https://crm.18518.net/images/emailImgs/star.png'></image>
-    <image class="bottomBtn" bindtap='bindMailDelete' data-text="{{emailInfo.TopTime==null}}" data-action="Delete" src='https://crm.18518.net/images/emailImgs/delete.png'></image>
-    <image class="bottomBtn" bindtap='bindHandled' data-text="{{emailInfo.Read=='否'}}" data-action="Read" src='https://crm.18518.net/images/emailImgs/handled.png'></image>
-    <image class="bottomBtn" bindtap='bindReback' src='https://crm.18518.net/images/emailImgs/reBACK.png'></image>
-    <image class="bottomBtn" bindtap='bindMore' src='https://crm.18518.net/images/emailImgs/more.png'>
+    <image class="bottomBtn" bindtap='bindMailStar' data-text="{{emailInfo.star==null?false:emailInfo.star}}" data-action="Star" src='https://app.jingdouyun.xin/images/emailImgs/star.png'></image>
+    <image class="bottomBtn" bindtap='bindMailDelete' data-text="{{emailInfo.TopTime==null}}" data-action="Delete" src='https://app.jingdouyun.xin/images/emailImgs/delete.png'></image>
+    <image class="bottomBtn" bindtap='bindHandled' data-text="{{emailInfo.Read=='否'}}" data-action="Read" src='https://app.jingdouyun.xin/images/emailImgs/handled.png'></image>
+    <image class="bottomBtn" bindtap='bindReback' src='https://app.jingdouyun.xin/images/emailImgs/reBACK.png'></image>
+    <image class="bottomBtn" bindtap='bindMore' src='https://app.jingdouyun.xin/images/emailImgs/more.png'>
     </image>
   </view>
   <view class="popMore {{IsPopMore==true?'':'hide'}}">
     <view class='lineOne'>
       <!-- <view bindtap='bindAdd' class='hide'>
-        <image src='https://crm.18518.net/images/emailImgs/add.png'></image>
+        <image src='https://app.jingdouyun.xin/images/emailImgs/add.png'></image>
         <text>加为客户</text>
       </view> -->
       <view bindtap='bindMailTop' data-text="{{emailInfo.TopTime==null?false:true}}" data-action="Top">
-        <image src='https://crm.18518.net/images/emailImgs/top.png'></image>
+        <image src='https://app.jingdouyun.xin/images/emailImgs/top.png'></image>
         <text>置顶</text>
       </view>
       <view bindtap='bindMailTag' data-text="{{emailInfo.TopTime==null}}">
-        <image src='https://crm.18518.net/images/emailImgs/tag.png'></image>
+        <image src='https://app.jingdouyun.xin/images/emailImgs/tag.png'></image>
         <text>标签</text>
       </view>
       <view bindtap='bindMailMoveTop' data-text="{{emailInfo.TopTime==null}}">
-        <image src='https://crm.18518.net/images/emailImgs/move.png'></image>
+        <image src='https://app.jingdouyun.xin/images/emailImgs/move.png'></image>
         <text>移动</text>
       </view>
       <view bindtap='bindMailRedFlag' data-text="{{emailInfo.redflag==null?false:emailInfo.redflag}}" data-action="Redflag">
-        <image src='https://crm.18518.net/images/emailImgs/redFlag.png'></image>
+        <image src='https://app.jingdouyun.xin/images/emailImgs/redFlag.png'></image>
         <text>红旗</text>
       </view>
     </view>
     <view class='lineTwo'>
       <!--      
       <view bindtap='bindMailDelete' class='hide' data-text="{{emailInfo.TopTime==null}}" data-action="Delete">
-        <image src='https://crm.18518.net/images/emailImgs/delete.png'></image>
+        <image src='https://app.jingdouyun.xin/images/emailImgs/delete.png'></image>
         <text>彻底删除</text>
       </view> -->
       <view bindtap='bindPopMailMark' data-text="{{emailInfo.TopTime==null}}">
-        <image src='https://crm.18518.net/images/emailImgs/mark.png'></image>
+        <image src='https://app.jingdouyun.xin/images/emailImgs/mark.png'></image>
         <text>备注</text>
       </view>
     </view>

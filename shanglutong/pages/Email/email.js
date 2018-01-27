@@ -149,7 +149,7 @@ Page({
                 currentMails: prevPage.data.currentMails
               });
               wx.navigateBack({
-                emailId: page.data.emailInfo.Id
+                emailId: page.data.emailInfo.id
               })
             }
           });
@@ -388,11 +388,11 @@ Page({
     postData.fileid = id;
     postData.fileclass = 2;
     wx.request({
-      url: app.globalData.transServer + "api/file/downloadFromRemote", //仅为示例，并非真实的资源
+      url: app.globalData.transServer + "api/file/GetFileUri", //仅为示例，并非真实的资源
       method: "POST",
       header: {
         "Content-Type": "application/x-www-form-urlencoded",
-        "TransToURL": app.globalData.server + "api/file/downloadFromRemote" //http://116.62.232.164:9898/
+        "TransToURL": app.globalData.server + "api/file/GetFileUri" //http://116.62.232.164:9898/
       },
       data: postData,
       success: function (res) {
@@ -410,10 +410,10 @@ Page({
     const downloadTask = wx.downloadFile({
       //todo:下载待修改
       //url:"https://www.lufyluo.xyz/file/text text.xls",
-      url: "https://crm.18518.net/"+ uri, //仅为示例，并非真实的资源
+      url: app.globalData.server+ uri, //仅为示例，并非真实的资源
       header: {       
-        "download": app.globalData.server + uri, //http://116.62.232.164:9898/
-        "TransToURL": "http://localhost/" + uri
+        "download": app.globalData.transServer + uri, //http://116.62.232.164:9898/
+        "TransToURL": app.globalData.server + uri
       },
       success: function (res) {
         // 只要服务器有响应数据，就会把响应内容写入文件并进入 success 回调，业务需要自行判断是否下载到了想要的内容
@@ -466,17 +466,10 @@ Page({
       method: "POST",
       data: postData,
       success: function (e) {
-        if (e.data.code = "0000") {
-          var result = e.data.back;
-          result.splice(0, 0, item);
-          page.setupBoxName(result);
-          page.setupGlobalBox(result, 0);
-          page.setData({
-            emaiBoxes: result
-          });
+        if (e.data.code = "0000") {          
           var pages = getCurrentPages();
           var prevPage = pages[pages.length - 2];
-          prevPage.setRead(prevPage.data.currentMails, page.data.emailInfo.id, "是");
+          prevPage.setRead(prevPage.data.currentMails, page.data.emailInfo.Id, "是");
         }
 
       }
